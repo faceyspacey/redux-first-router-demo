@@ -1,0 +1,38 @@
+.home {
+  background: #141414;
+  border: 1px solid rgb(30,30,30);
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.home h1 {
+  color: rgb(190,190,190); 
+  font-size: 18px;
+  text-align: center;
+  margin-top: 0px;
+  text-shadow: 1px 1px 1px rgb(5,5,5);
+}
+
+.home h2 {
+  color: rgb(130,130,130); 
+  font-size: 16px;
+  text-align: center;
+  font-weight: normal;
+  margin-top: -4px;
+  text-shadow: 1px 1px 1px rgb(5,5,5);
+}
+
+.home span {
+  color: rgb(90,90,90); 
+  display: block;
+  
+  margin: 16.5px 0px;
+  position: relative;
+  top: -13px;
+}
+
+.home pre {
+  margin-top: -20px;
+  color: rgb(90,90,90); 
+  font-size: 14px;
+}
