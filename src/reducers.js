@@ -1,5 +1,6 @@
-import { NOT_FOUND } from 'pure-redux-router'
+import { NOT_FOUND } from 'redux-first-router'
 
+// the primary reducer demonstrating Redux-First Router:
 export const page = (state = 'HOME', action = {}) => {
   switch(action.type) {
     case 'HOME':
@@ -52,7 +53,7 @@ export const direction = (state = 'next', action = {}) => {
 export const videoList = (state = [], action = {}) => {
   switch(action.type) {
     case 'LIST':
-      return [] // always refresh state to show spinner on List page load
+      return [] // naive: always refresh state to show spinner on List page load
     case 'VIDEOS_FETCHED':
       return action.payload.map(video => video.slug)
     default:

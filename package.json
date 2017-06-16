@@ -8,13 +8,14 @@
   "dependencies": {
     "animated-transition-group": "^1.0.15",
     "history": "^4.6.1",
-    "pure-redux-router": "1.0.38",
-    "pure-redux-router-link": "^1.0.14",
-    "react": "15.4.2",
-    "react-dom": "15.4.2",
-    "react-redux": "5.0.2",
-    "redux": "3.6.0",
-    "scroll-behavior": "^0.9.3"
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "redux": "^3.6.0",
+    "redux-first-router": "1.4.6",
+    "redux-first-router-link": "^1.0.2",
+    "redux-first-router-restore-scroll": "1.1.1",
+    "redux-first-router-scroll-container": "1.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

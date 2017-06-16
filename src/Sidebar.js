@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Link from 'pure-redux-router-link'
+import Link from 'redux-first-router-link'
 
 import styles from './Sidebar.css'
 
@@ -8,7 +8,6 @@ const Sidebar = ({ onClick, path }) =>
   <div className={styles.sidebar}>
     <h2>SEO-FRIENDLY LINKS</h2>
     <Link className={active(path, '/')} href="/">HOME</Link>
-    <Link className={active(path, '/page')} href="/page">PAGE</Link>
     <Link className={active(path, '/list/db-graphql')} href="/list/db-graphql">DB & GRAPHQL</Link>
     <Link className={active(path, '/list/react-redux')} href={['list', 'react-redux']}>REACT & REDUX</Link>
     <Link 
@@ -53,3 +52,6 @@ const mapDispatch = { onClick: createAction }
 const mapState = ({ location }) => ({ path: location.pathname })
 
 export default connect(mapState, mapDispatch)(Sidebar)
+
+// for testing scroll restoration:
+// <Link className={active(path, '/page')} href="/page">PAGE</Link>

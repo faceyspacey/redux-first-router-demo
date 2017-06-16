@@ -9,29 +9,7 @@ import Page, { Page2 } from './Page'
 
 import styles from './Switcher.css'
 
-class Switcher extends React.Component {
-  componentDidUpdate() {
-    console.log('UPDATE')
-  }
-  render() {
-    console.log('RENDER')
-    const { page, direction } = this.props
-    return (
-      <AnimatedTransitionGroup 
-        component="div" 
-        className={`${styles.switcher} ${direction}`}
-        duration={500}
-        prefix='fade'
-      >
-        <AnimatedChild key={page}>
-          {getComponent(page)}
-        </AnimatedChild>
-      </AnimatedTransitionGroup>
-    )
-  }
-}
-
-const SwitcherReal = ({ page, direction }) =>
+const Switcher = ({ page, direction }) =>
   <AnimatedTransitionGroup 
     component="div" 
     className={`${styles.switcher} ${direction}`}
@@ -43,7 +21,6 @@ const SwitcherReal = ({ page, direction }) =>
     </AnimatedChild>
   </AnimatedTransitionGroup>
 
-// yes, we should be making this stuff ourselves. it's not difficult:
 const getComponent = page => {
   switch(page) {
     case 'Home':  

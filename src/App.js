@@ -7,10 +7,8 @@ import Switcher from './Switcher'
 
 import styles from './App.css'
 
-const AppReal = () =>
+export default () =>
   <div>
-    <AddressBar />
-  
     <div className={styles.app}>
       <Sidebar />
       <Switcher />
@@ -19,23 +17,20 @@ const AppReal = () =>
     <DevTools />
   </div>
 
-export default class App extends React.Component {
-  componentDidUpdate(prev) {
-    console.log('UPDATE APP', prev, this.props)
-  }
 
-  render() {
-    return (
-      <div>
-        <div className={styles.app}>
-          <Sidebar />
-          <Switcher />
-        </div>
-      
-        <DevTools />
-      </div>
-    )
-  }
-}
 
+// for deploying to Webpackbin.com where we use a fake address bar
+// since the app is served in an iframe (make sure to use memory history):
+
+// const AppWebpackBin = () =>
+//   <div>
+//     <AddressBar /> // fake address bar!
+  
+//     <div className={styles.app}>
+//       <Sidebar />
+//       <Switcher />
+//     </div>
+  
+//     <DevTools />
+//   </div>
 

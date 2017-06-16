@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'pure-redux-router-link'
+import Link from 'redux-first-router-link'
 import ScrollContainer from 'redux-first-router-scroll-container'
 export default () => 
   <div style={{color: 'white'}}>

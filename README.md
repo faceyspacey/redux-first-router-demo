@@ -1,9 +1,12 @@
-# WebpackBin project
+# Demonstration of [Redux-First Router](https://github.com/faceyspacey/redux-first-router-example)
 
-## Start
+## Installation
+```
+git clone https://github.com/faceyspacey/redux-first-router-example
+cd redux-first-router-example
+yarn
+yarn start
+```
 
-`npm install`
-
-`npm start`
-
-Go to `localhost:8080`
+## Notes
+The file structure is flat because the intent is for this to appear on [webpackbin.com](webpackbin.com).

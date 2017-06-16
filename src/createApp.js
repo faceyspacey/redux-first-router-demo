@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import configureStore from './configureStore'
 import App from './App'
 
-const createApp = (path) => {
+export default path => {
   const store = configureStore(path)
   const root = document.getElementById('app')
   
@@ -18,5 +18,3 @@ const createApp = (path) => {
     root
   )
 }
-
-export default createApp

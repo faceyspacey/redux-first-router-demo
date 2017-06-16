@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { back, next } from 'pure-redux-router'
+import { back, next } from 'redux-first-router'
 
 import createApp from './createApp'
 import styles from './AddressBar.css'

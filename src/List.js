@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Link from 'pure-redux-router-link'
+import Link from 'redux-first-router-link'
 
 import styles from './List.css'
 
