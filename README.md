@@ -1,8 +1,8 @@
-# Demonstration of [Redux-First Router](https://github.com/faceyspacey/redux-first-router-example)
+# Demonstration of [Redux-First Router](https://github.com/faceyspacey/redux-first-router)
 
 ## Installation
 ```
-git clone https://github.com/faceyspacey/redux-first-router-example
+git clone https://github.com/faceyspacey/redux-first-router-demo
 cd redux-first-router-example
 yarn
 yarn start
