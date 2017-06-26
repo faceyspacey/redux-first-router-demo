@@ -23,15 +23,15 @@ const Video = ({ slug, title, youtubeId, category, by, color, tip }) =>
 
       <span className={styles.tipTitle}>Tip</span>
       <div className={styles.tip}>
-        {slug 
+        {slug
           ? tip
           : <span style={{color: 'red'}}>
               YOU FOUND A MISSING FEATURE!
-              There is no data because you Refreshed the video page, 
+              There is no data because you Refreshed the video page,
               whose data is fetched on the previous page. Try adding a thunk
               to this route in `configureStore.js` to insure when
               visited directly this page has its data as well. You can either
-              request the same data again or redirect to another route, eg: 
+              request the same data again or redirect to another route, eg:
               <span style={{color: 'blue'}}> {`dispatch({ type: 'HOME' })`}</span>
             </span>
         }
