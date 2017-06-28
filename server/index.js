@@ -14,7 +14,7 @@ const publicPath = clientConfig.output.publicPath
 const outputPath = clientConfig.output.path
 const app = express()
 
-// COOKIES - in a real app obviously you set this after signup/login:
+// JWTOKEN COOKIE - in a real app obviously you set this after signup/login:
 
 app.use(cookieParser())
 
