@@ -1,0 +1,76 @@
+.container {
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: #1d1f20;
+  border: 1px solid #27292a;
+  box-sizing: border-box;
+}
+.titleBar {
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0;
+  background: #555;
+  height: 14px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+.titleBar span {
+  width: 100%;
+  font-size: 10px;
+  color: #fff;
+  font-weight: normal;
+  text-align: center;
+}
+.titleBar span:nth-child(1) {
+  color: #89f975;
+}
+.titleBar span:nth-child(2) {
+  color: #f42b63;
+}
+.titleBar span:nth-child(3) {
+  color: #638bf6;
+}
+.devTools {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  overflow-y: auto;
+  height: 100%;
+}
+.actionsBox,
+.stateBox {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 10000px;
+  padding: 0px 2px;
+  width: 50%;
+  overflow: hidden;
+}
+.actionsBox {
+  color: #89f975;
+  border-right: 4px solid #555;
+}
+.stateBox {
+  color: #396eff;
+}

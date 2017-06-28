@@ -1,73 +1,42 @@
-import path from 'path'
 import React from 'react'
 import ReactDOM from 'react-dom/server'
-import { flushChunkNames } from 'react-universal-component/server'
+import { Provider } from 'react-redux'
+import { flushModuleIds } from 'react-universal-component/server'
 import flushChunks from 'webpack-flush-chunks'
+import configureStore from './configureStore'
 import App from '../src/components/App'
 
-export default ({ clientStats, outputPath }) => (req, res, next) => {
-  const app = ReactDOM.renderToString(<App />)
-  const chunkNames = flushChunkNames()
+export default ({ clientStats }) => async (req, res, next) => {
+  const store = await configureStore(req, res)
+  if (!store) return // no store means redirect was already served
 
-  const {
-    // react components:
-    Js,
-    Styles, // external stylesheets
-    Css, // raw css
+  const app = createApp(App, store)
+  const appString = ReactDOM.renderToString(app)
+  const stateJson = JSON.stringify(store.getState())
+  const moduleIds = flushModuleIds()
+  const { js, styles } = flushChunks(clientStats, { moduleIds })
 
-    // strings:
-    js,
-    styles, // external stylesheets
-    css, // raw css
+  console.log('REQUESTED PATH:', req.path)
 
-    // arrays of file names (not including publicPath):
-    scripts,
-    stylesheets,
-
-    publicPath
-  } = flushChunks(clientStats, {
-    chunkNames,
-    before: ['bootstrap'],
-    after: ['main'],
-
-    // only needed if serving css rather than an external stylesheet
-    // note: during development css still serves as a stylesheet
-    outputPath
-  })
-
-  console.log('PATH', req.path)
-  console.log('SERVED SCRIPTS', scripts)
-  console.log('SERVED STYLESHEETS', stylesheets)
-
-  res.send(
+  return res.send(
     `<!doctype html>
       <html>
         <head>
           <meta charset="utf-8">
-          <title>react-universal-component-boilerplate</title>
+          <title>redux-first-router-demo</title>
           ${styles}
+          <link rel="stylesheet prefetch" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         </head>
         <body>
-          <div id="root">${app}</div>
+          <script>window.REDUX_STATE = ${stateJson}</script>
+          <div id="root">${appString}</div>
           ${js}
         </body>
       </html>`
   )
-
-  // COMMENT the above `res.send` call
-  // and UNCOMMENT below to test rendering React components:
-
-  // const html = ReactDOM.renderToStaticMarkup(
-  //   <html>
-  //     <head>
-  //       <Css />
-  //     </head>
-  //     <body>
-  //       <div id="root" dangerouslySetInnerHTML={{ __html: app }} />
-  //       <Js />
-  //     </body>
-  //   </html>
-  // )
-
-  // res.send(`<!DOCTYPE html>${html}`)
 }
+
+const createApp = (App, store) =>
+  <Provider store={store}>
+    <App />
+  </Provider>

@@ -7,7 +7,11 @@ module.exports = {
   name: 'client',
   target: 'web',
   devtool: 'source-map',
-  entry: [path.resolve(__dirname, '../src/index.js')],
+  entry: [
+    'babel-polyfill',
+    'fetch-everywhere',
+    path.resolve(__dirname, '../src/index.js')
+  ],
   output: {
     filename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, '../buildClient'),
@@ -34,9 +38,13 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    extensions: ['.js', '.css']
+  },
   plugins: [
     new StatsPlugin('stats.json'),
     new ExtractCssChunks(),
+    new webpack.HashedModuleIdsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
       filename: '[name].[chunkhash].js',

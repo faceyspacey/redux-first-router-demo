@@ -5,9 +5,11 @@ const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 module.exports = {
   name: 'client',
   target: 'web',
-  devtool: 'source-map',
-  // devtool: 'eval',
+  // devtool: 'source-map',
+  devtool: 'eval',
   entry: [
+    'babel-polyfill',
+    'fetch-everywhere',
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false',
     'react-hot-loader/patch',
     path.resolve(__dirname, '../src/index.js')
@@ -38,8 +40,12 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    extensions: ['.js', '.css']
+  },
   plugins: [
     new ExtractCssChunks(),
+    new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
       filename: '[name].js',
