@@ -21,6 +21,23 @@ export const slug = (state = '', action = {}) =>
 
 export const playing = (state = false, action = {}) => action.type === 'PLAY'
 
+export const title = (state = 'RFR Demo', action = {}) => {
+  switch (action.type) {
+    case 'HOME':
+      return 'RFR Demo'
+    case 'LIST':
+      return `RFR: ${action.payload.category}`
+    case 'VIDEO':
+      return `RFR: ${action.payload.slug}`
+    case 'LOGIN':
+      return 'RFR Login'
+    case 'ADMIN':
+      return 'RFR Admin'
+    default:
+      return state
+  }
+}
+
 // eg: videoHash = { 'slug-1': video1, 'slug-2': video2 }:
 
 export const videoHash = (state = {}, action = {}) => {
