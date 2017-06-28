@@ -137,7 +137,7 @@ export const actions = (state = [], action = {}) => {
 export const jwToken = (state = null, action = {}) =>
   (action.type === 'TOKEN' && action.payload) || state
 
-// UTILS
+// UTILS:
 
 const capitalize = str =>
   str.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
