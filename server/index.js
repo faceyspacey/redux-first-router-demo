@@ -16,19 +16,7 @@ const app = express()
 
 app.use(cookieParser())
 
-app.get('/api/videos/:category', async (req, res) => {
-  const jwToken = req.headers.authorization.split(' ')[1]
-  const data = await findVideos(req.params.category, jwToken)
-  res.json(data)
-})
-
-app.get('/api/video/:slug', async (req, res) => {
-  const jwToken = req.headers.authorization.split(' ')[1]
-  const data = await findVideo(req.params.slug, jwToken)
-  res.json(data)
-})
-
-// in a real app obviously you set this after signup/login:
+// COOKIES - in a real app obviously you set this after signup/login:
 
 app.use((req, res, next) => {
   const cookie = req.cookies.jwToken
@@ -41,6 +29,22 @@ app.use((req, res, next) => {
 
   next()
 })
+
+// API
+
+app.get('/api/videos/:category', async (req, res) => {
+  const jwToken = req.headers.authorization.split(' ')[1]
+  const data = await findVideos(req.params.category, jwToken)
+  res.json(data)
+})
+
+app.get('/api/video/:slug', async (req, res) => {
+  const jwToken = req.headers.authorization.split(' ')[1]
+  const data = await findVideo(req.params.slug, jwToken)
+  res.json(data)
+})
+
+// UNIVERSAL HMR + STATS HANDLING GOODNESS:
 
 if (DEV) {
   const multiCompiler = webpack([clientConfig, serverConfig])
