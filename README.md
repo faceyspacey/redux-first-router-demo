@@ -35,7 +35,7 @@ I comment throughout the code various things you can try. Look out for comments 
 
 For example, there are simple values like the `jwToken` you can toggle to get access to the restricted *admin* area. That showcases a key feature: ***authentication filtering.*** 
 
-In general, his Demo is all about SSR. It shows how to use the `onBeforeChange` to properly authenticate user's and routes using *JSON Web Tokens*. And of course data-fetching via `thunks` is central to it all. There's even a real API.
+In general, this Demo is all about SSR. It shows how to use the `onBeforeChange` to properly authenticate user's and routes using *JSON Web Tokens*. And of course data-fetching via `thunks` is central to it all. There's even a real API.
 
 Lastly, the [***server/configureStore.js***](./server/configureStore.js) file is the absolute most important file of the demo. It essentially brings your ***routing-aware Redux store*** full circle in a dead simple yet flexible manner. It works in combination with [***src/routesMap.js***](./src/routesMap.js). Study those and your redux routing dreams have come true 😀
 
