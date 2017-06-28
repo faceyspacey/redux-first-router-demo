@@ -1,14 +1,16 @@
 import React from 'react'
 import universal from 'react-universal-component'
-import NotFound from './NotFound'
-import styles from '../css/Switcher'
+import { spinner, admin, login, notFound } from '../css/Switcher'
 
 export default ({ page, isLoading }) => {
   const Component = components[page] || NotFound
   return <Component isLoading={isLoading} />
 }
 
-const loading = <div className={styles.loading}><div /></div>
+const loading = () => <div className={spinner}><div /></div>
+const Admin = () => <div className={admin}>U FIGURED OUT HOW TO DO AUTH!</div>
+const Login = () => <div className={login}>YOU ARE NOT ALLOWED IN!</div>
+const NotFound = () => <div className={notFound}>PAGE NOT FOUND - 404</div>
 
 const components = {
   Home: universal(() => import('./Home'), {
@@ -26,7 +28,8 @@ const components = {
     minDelay: 500, // i.e. no re-renders during animation
     loading
   }),
-  Admin: () => <div className={styles.a}>YOU FIGURED OUT HOW TO DO AUTH!</div>,
+  Admin,
+  Login,
   NotFound
 }
 

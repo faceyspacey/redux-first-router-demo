@@ -1,5 +1,5 @@
 import { redirect, NOT_FOUND } from 'redux-first-router'
-import { fetchData, isAllowed } from './utils'
+import { fetchData, isAllowed, isServer } from './utils'
 
 export default {
   HOME: '/',
@@ -45,6 +45,7 @@ export default {
       }
     }
   },
+  LOGIN: '/login',
   ADMIN: {
     path: '/admin', // TRY: visit this path or dispatch ADMIN
     role: 'admin' // + change jwToken to 'real' in server/index.js
@@ -56,8 +57,19 @@ export const options = {
     const allowed = isAllowed(action.type, getState())
 
     if (!allowed) {
-      const action = redirect({ type: 'HOME' }) // obviously could be 'LOGIN'
+      const action = redirect({ type: 'LOGIN' })
       dispatch(action)
+    }
+  },
+  onAfterChange: (dispatch, getState) => {
+    const { type } = getState().location
+
+    if (type === 'LOGIN' && !isServer) {
+      setTimeout(() => {
+        alert(
+          "NICE, You're adventurous! Try changing the jwToken cookie from 'fake' to 'real' in server/index.js to access the Admin Panel. Then 'onBeforeChange' will let you in."
+        )
+      }, 1500)
     }
   }
 }

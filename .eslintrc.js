@@ -33,7 +33,8 @@ module.exports = {
     it: true,
     expect: true,
     beforeEach: true,
-    fetch: true
+    fetch: true,
+    alert: true
   },
   rules: {
     'import/extensions': [

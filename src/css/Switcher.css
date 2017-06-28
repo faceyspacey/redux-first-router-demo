@@ -21,7 +21,7 @@
   color: white;
 }
 
-.loading {
+.spinner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -37,7 +37,7 @@
           justify-content: center;
 }
 
-.loading > div {
+.spinner > div {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -63,7 +63,7 @@
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-.loading > div:before {
+.spinner > div:before {
   width: 50%;
   height: 50%;
   background: #373737;
@@ -73,7 +73,7 @@
   left: 0;
   content: '';
 }
-.loading > div:after {
+.spinner > div:after {
   background: #0f0f0f;
   width: 75%;
   height: 75%;
@@ -167,12 +167,14 @@
   transition: all 500ms;
 }
 
-.a {
+/* ADMIN PANEL */
+
+.admin {
   text-align: center;
   padding-top: calc((100vh - 380px)/2);
 }
 
-.a:before {
+.admin:before {
   position: absolute;
   top: 20px;
   left: 0;
@@ -184,7 +186,7 @@
   text-align: center;
 }
 
-.a:after {
+.admin:after {
   position: absolute;
   bottom: 20px;
   left: 0;
@@ -194,4 +196,27 @@
   color: rgb(40,40,40);
   text-shadow: 1px 1px 1px #000;
   text-align: center;
+}
+
+.login {
+  text-align: center;
+  padding-top: calc((100vh - 380px)/2);
+  color: red !important;
+  font-size: 26px;
+  text-shadow: 1px 1px 1px #000;
+}
+
+/* NOT FOUND */
+
+.notFound {
+  background: #141414;
+  border: 1px solid rgb(30,30,30);
+  box-sizing: border-box;
+  padding: 10px;
+  color: red;
+  font-size: 32px;
+  text-shadow: 1px 1px 1px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -7,6 +7,7 @@ const components = {
   LIST: 'List',
   VIDEO: 'Video',
   ADMIN: 'Admin',
+  LOGIN: 'Login',
   [NOT_FOUND]: 'NotFound'
 }
 

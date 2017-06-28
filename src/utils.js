@@ -1,6 +1,8 @@
 import routesMap from './routesMap'
 // import jwt from 'jsonwebtoken'
 
+export const isServer = typeof window === 'undefined'
+
 export const fetchData = async (path, jwToken) =>
   fetch(`http://localhost:3000${path}`, {
     headers: {
@@ -27,7 +29,6 @@ export const isAllowed = (type, state) => {
 // like the one imported above. For now we will mock both the client + server
 // verification methods:
 
-const isServer = typeof window === 'undefined'
 const fakeUser = { roles: ['admin'] }
 const userFromState = ({ jwToken, user }) => jwToken === 'real' && fakeUser
 const jwt = {
