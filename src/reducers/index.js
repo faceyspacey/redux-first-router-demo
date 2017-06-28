@@ -26,9 +26,9 @@ export const title = (state = 'RFR Demo', action = {}) => {
     case 'HOME':
       return 'RFR Demo'
     case 'LIST':
-      return `RFR: ${action.payload.category}`
+      return `RFR: ${capitalize(action.payload.category)}`
     case 'VIDEO':
-      return `RFR: ${action.payload.slug}`
+      return `RFR: ${capitalize(action.payload.slug)}`
     case 'LOGIN':
       return 'RFR Login'
     case 'ADMIN':
@@ -136,3 +136,8 @@ export const actions = (state = [], action = {}) => {
 
 export const jwToken = (state = null, action = {}) =>
   (action.type === 'TOKEN' && action.payload) || state
+
+// UTILS
+
+const capitalize = str =>
+  str.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
