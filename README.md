@@ -44,4 +44,4 @@ Lastly, the [***server/configureStore.js***](./server/configureStore.js) file is
 
 ## TO DO
 
-- auth0-based complete signup/login that replaces current fake cookie/JWToken setup *(PR welcome)*
+- auth0-based signup/login that replaces current fake cookie/JWToken setup *(PR welcome)*
