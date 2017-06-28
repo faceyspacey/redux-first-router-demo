@@ -5,7 +5,7 @@ import configureStore from '../src/configureStore'
 export default async (req, res) => {
   const jwToken = req.cookies.jwToken // see server/index.js to change jwToken
   const preLoadedState = { jwToken } // onBeforeChange will authenticate using this
-  console.log('TOKEN', jwToken)
+
   const history = createHistory({ initialEntries: [req.path] })
   const { store, thunk } = configureStore(history, preLoadedState)
 
@@ -18,7 +18,7 @@ export default async (req, res) => {
   // using redux-thunk perhaps request and dispatch some app-wide state as well, e.g:
   // await Promise.all([store.dispatch(myThunkA), store.dispatch(myThunkB)])
 
-  await thunk(store)
+  await thunk(store) // THE PAYOFF BABY!
 
   location = store.getState().location // remember: state has now changed
   if (doesRedirect(location, res)) return false // only do this again if ur thunks have redirects
