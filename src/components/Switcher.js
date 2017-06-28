@@ -15,13 +15,12 @@ const Switcher = ({ page, direction, isLoading }) =>
     duration={500}
     prefix='fade'
   >
-    <AnimatedChild key={debouncedKey(page, isLoading)}>
+    <AnimatedChild key={debounce(page)}>
       <UniversalComponent page={page} isLoading={isLoading} />
     </AnimatedChild>
   </AnimatedTransitionGroup>
 
-const debouncedKey = (page, isLoading) =>
-  isLoading ? page : page + +new Date()
+const debounce = page => page + +new Date()
 
 const mapState = ({ page, direction, videosByCategory }) => {
   const { category, categories } = videosByCategory
