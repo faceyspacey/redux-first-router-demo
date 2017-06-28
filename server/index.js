@@ -14,9 +14,9 @@ const publicPath = clientConfig.output.publicPath
 const outputPath = clientConfig.output.path
 const app = express()
 
-app.use(cookieParser())
-
 // COOKIES - in a real app obviously you set this after signup/login:
+
+app.use(cookieParser())
 
 app.use((req, res, next) => {
   const cookie = req.cookies.jwToken
