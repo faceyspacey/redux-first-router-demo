@@ -33,12 +33,15 @@ const components = {
   NotFound
 }
 
-// NOTE: `resolve` option wont be needed in upcoming babel-plugin
+// NOTE: `require.resolveWeak` is Webpack method to require a module without
+// creating a dependency, which powers synchronous rendering when available.
+// The `resolve` option soon wont be needed thanks to an upcoming babel-plugin.
+// Don't stress it.
 
 // THE FUTURE:
 // https://github.com/webpack/webpack/issues/4993
 // when Webpack fixes the above issue with `resolveWeak` dynamic requires,
-// we can skip the wrapping component and just export this:
+// we can also skip the wrapping component and just export this:
 //
 // export default universal(({ page }) => import(`./${page}`), {
 //  minDelay: 500,

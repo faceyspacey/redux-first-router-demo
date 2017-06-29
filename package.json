@@ -21,7 +21,7 @@
     "foo": "NODE_ENV=production babel server/index.js"
   },
   "dependencies": {
-    "animated-transition-group": "^1.0.19",
+    "animated-transition-group": "^1.0.21",
     "babel-polyfill": "^6.23.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.2",

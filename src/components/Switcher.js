@@ -13,14 +13,13 @@ const Switcher = ({ page, direction, isLoading }) =>
     component='div'
     className={`${styles.switcher} ${direction}`}
     duration={500}
+    debounce={500}
     prefix='fade'
   >
-    <AnimatedChild key={debounce(page)}>
+    <AnimatedChild key={page}>
       <UniversalComponent page={page} isLoading={isLoading} />
     </AnimatedChild>
   </AnimatedTransitionGroup>
-
-const debounce = page => page + +new Date()
 
 const mapState = ({ page, direction, videosByCategory }) => {
   const { category, categories } = videosByCategory
