@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Link from 'redux-first-router-link'
+import Link, { NavLink } from 'redux-first-router-link'
 import { goToPage } from '../actions'
 import styles from '../css/Sidebar'
 
@@ -8,25 +8,22 @@ const Sidebar = ({ onClick, path }) =>
   <div className={styles.sidebar}>
     <h2>SEO-FRIENDLY LINKS</h2>
 
-    <Link className={active(path, '/')} href='/'>HOME</Link>
+    <NavLink activeClassName={styles.active} exact to='/'>HOME</NavLink>
 
-    <Link className={active(path, '/list/db-graphql')} href='/list/db-graphql'>
+    <NavLink activeClassName={styles.active} to='/list/db-graphql'>
       DB & GRAPHQL
-    </Link>
+    </NavLink>
 
-    <Link
-      className={active(path, '/list/react-redux')}
-      href={['list', 'react-redux']}
-    >
+    <NavLink activeClassName={styles.active} to={['list', 'react-redux']}>
       REACT & REDUX
-    </Link>
+    </NavLink>
 
-    <Link
-      className={active(path, '/list/fp')}
-      href={{ type: 'LIST', payload: { category: 'fp' } }}
+    <NavLink
+      activeClassName={styles.active}
+      to={{ type: 'LIST', payload: { category: 'fp' } }}
     >
       FP
-    </Link>
+    </NavLink>
 
     <div style={{ height: 20 }} />
     <h2>EVENT HANDLERS</h2>

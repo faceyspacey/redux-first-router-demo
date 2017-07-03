@@ -12,16 +12,14 @@ const Home = () =>
     <div style={{ height: 20 }} />
 
     <span>
-      {'HREF STRING: <Link href="/list/db-graphql">DB & GRAPHQL</Link>'}
+      {'HREF STRING: <Link to="/list/db-graphql">DB & GRAPHQL</Link>'}
+    </span>
+    <span>
+      {"PATH SEGMENTS: <Link to={['list', 'react-redux']}>REACT & REDUX</Link>"}
     </span>
     <span>
       {
-        "PATH SEGMENTS: <Link href={['list', 'react-redux']}>REACT & REDUX</Link>"
-      }
-    </span>
-    <span>
-      {
-        "ACTION: <Link href={{ type: 'LIST', payload: { category: 'fp' } }}>FP</Link>"
+        "ACTION: <Link to={{ type: 'LIST', payload: { category: 'fp' } }}>FP</Link>"
       }
     </span>
 

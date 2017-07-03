@@ -78,9 +78,9 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-animated-transition-group@^1.0.21:
-  version "1.0.21"
-  resolved "https://registry.yarnpkg.com/animated-transition-group/-/animated-transition-group-1.0.21.tgz#4331bd764980ca703049a1d0046bd8af815a9ef8"
+animated-transition-group@^1.0.22:
+  version "1.0.22"
+  resolved "https://registry.yarnpkg.com/animated-transition-group/-/animated-transition-group-1.0.22.tgz#aa34a5bd57bc85c954f6861b5aa3f2db2ea9c2ff"
   dependencies:
     prop-types "^15.5.10"
     react-addons-transition-group "^15.4.2"
@@ -2220,16 +2220,16 @@ extglob@^0.3.1:
   dependencies:
     is-extglob "^1.0.0"
 
-extract-css-chunks-webpack-plugin@^1.0.12:
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/extract-css-chunks-webpack-plugin/-/extract-css-chunks-webpack-plugin-1.0.12.tgz#25b2f27e6198a89923ab549f8592ec07733961d8"
+extract-css-chunks-webpack-plugin@latest:
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/extract-css-chunks-webpack-plugin/-/extract-css-chunks-webpack-plugin-1.0.15.tgz#5fd6a3c2f68b7be651e136e0959718eddb8f6dd2"
   dependencies:
     ajv "^4.11.2"
     async "^2.1.2"
     jsesc "^2.5.1"
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
-    style-loader "^0.16.1"
+    style-loader "^0.18.2"
     webpack-sources "^1.0.1"
 
 extsprintf@1.0.2:
@@ -4520,11 +4520,13 @@ redux-devtools-extension@^2.13.2:
   version "2.13.2"
   resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.2.tgz#e0f9a8e8dfca7c17be92c7124958a3b94eb2911d"
 
-redux-first-router-link@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/redux-first-router-link/-/redux-first-router-link-1.0.3.tgz#8b42426c773f37a5491613e1e8fddeb2eef777b0"
+redux-first-router-link@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/redux-first-router-link/-/redux-first-router-link-1.0.5.tgz#8e6737aea5fa7d5c0df51f9604a500d7200c0901"
   dependencies:
+    path-to-regexp "^1.7.0"
     prop-types "15.5.10"
+    rudy-match-path "^0.0.2"
 
 redux-first-router@^1.5.1:
   version "1.5.1"
@@ -4752,6 +4754,12 @@ rimraf@~2.5.1, rimraf@~2.5.4:
 ripemd160@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-1.0.1.tgz#93a4bbd4942bc574b69a8fa57c71de10ecca7d6e"
+
+rudy-match-path@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/rudy-match-path/-/rudy-match-path-0.0.2.tgz#af88d3b1d82057118a159910f0997e89625f0ecb"
+  dependencies:
+    path-to-regexp "^1.7.0"
 
 run-async@^0.1.0:
   version "0.1.0"
@@ -5182,11 +5190,12 @@ strip-json-comments@2.0.1, strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-style-loader@^0.16.1:
-  version "0.16.1"
-  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.16.1.tgz#50e325258d4e78421dd9680636b41e8661595d10"
+style-loader@^0.18.2:
+  version "0.18.2"
+  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.18.2.tgz#cc31459afbcd6d80b7220ee54b291a9fd66ff5eb"
   dependencies:
     loader-utils "^1.0.2"
+    schema-utils "^0.3.0"
 
 supports-color@^2.0.0:
   version "2.0.0"

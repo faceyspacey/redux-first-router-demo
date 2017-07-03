@@ -12,7 +12,7 @@ const List = ({ videos }) =>
 const Row = ({ slug, title, youtubeId, by, color }) =>
   <Link
     className={styles.row}
-    href={`/video/${slug}`}
+    to={`/video/${slug}`}
     style={{ backgroundImage: youtubeBackground(youtubeId) }}
   >
     <div className={styles.avatar} style={{ backgroundColor: color }}>
