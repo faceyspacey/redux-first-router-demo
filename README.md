@@ -7,6 +7,7 @@
 ```
 git clone https://github.com/faceyspacey/redux-first-router-demo
 cd redux-first-router-demo
+yarn
 yarn start
 ```
 
