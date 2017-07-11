@@ -1,6 +1,9 @@
 const path = require('path')
 const webpack = require('webpack')
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
+const WriteFilePlugin = require('write-file-webpack-plugin')
+const AutoDllPlugin = require('autodll-webpack-plugin')
+// const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
+const ExtractCssChunks = require('../../extract-css-chunks-webpack-plugin')
 
 module.exports = {
   name: 'client',
@@ -16,6 +19,7 @@ module.exports = {
   ],
   output: {
     filename: '[name].js',
+    chunkFilename: '[name].js',
     path: path.resolve(__dirname, '../buildClient'),
     publicPath: '/static/'
   },
@@ -44,8 +48,8 @@ module.exports = {
     extensions: ['.js', '.css']
   },
   plugins: [
+    new WriteFilePlugin(),
     new ExtractCssChunks(),
-    new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
       filename: '[name].js',
@@ -57,6 +61,26 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development')
+      }
+    }),
+    new AutoDllPlugin({
+      context: path.join(__dirname, '..'),
+      filename: '[name].js',
+      entry: {
+        vendor: [
+          'react',
+          'react-dom',
+          'react-redux',
+          'redux',
+          'history/createBrowserHistory',
+          'animated-transition-group',
+          'redux-first-router',
+          'redux-first-router-link',
+          'fetch-everywhere',
+          'babel-polyfill',
+          'react-hot-loader/lib/AppContainer',
+          'redux-devtools-extension/logOnlyInProduction'
+        ]
       }
     })
   ]

@@ -1,5 +1,12 @@
 # Universal Demonstration of [Redux-First Router](https://github.com/faceyspacey/redux-first-router)
 
+This demo specializes in SSR and the sort of things like redirecting and authentication you will do on the server.
+
+For the client-only codesandbox you can start tinkering with in one more click, checkout:
+
+**https://codesandbox.io/s/github/faceyspacey/redux-first-router-codesandbox**
+
+
 ![redux-first-router-demo screenshot](./screenshot.png)
 
 ## Installation

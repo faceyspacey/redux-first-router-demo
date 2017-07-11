@@ -2,15 +2,15 @@ import React from 'react'
 import universal from 'react-universal-component'
 import { spinner, admin, login, notFound } from '../css/Switcher'
 
-export default ({ page, isLoading }) => {
-  const Component = components[page] || NotFound
-  return <Component isLoading={isLoading} />
-}
-
 const loading = () => <div className={spinner}><div /></div>
 const Admin = () => <div className={admin}>U FIGURED OUT HOW TO DO AUTH!</div>
 const Login = () => <div className={login}>YOU ARE NOT ALLOWED IN!</div>
 const NotFound = () => <div className={notFound}>PAGE NOT FOUND - 404</div>
+
+export default ({ page, isLoading }) => {
+  const Component = components[page] || NotFound
+  return <Component isLoading={isLoading} />
+}
 
 const components = {
   Home: universal(() => import('./Home'), {
@@ -43,10 +43,14 @@ const components = {
 // when Webpack fixes the above issue with `resolveWeak` dynamic requires,
 // we can also skip the wrapping component and just export this:
 //
-// export default universal(({ page }) => import(`./${page}`), {
-//  minDelay: 500,
-//  loading,
-//  error: NotFound
+// UPDATE: I made a PR that addresses this (vote it up)
+//
+// export default universal(({ page }) => import(`../components/${page}`), {
+//   minDelay: 500,
+//   loading,
+//   error: NotFound
 // })
 //
+// you can see how this looks in a client-only SPA in the codesandbox:
+// https://codesandbox.io/s/github/faceyspacey/redux-first-router-codesandbox
 // :)

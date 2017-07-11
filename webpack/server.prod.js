@@ -56,7 +56,6 @@ module.exports = {
     extensions: ['.js', '.css']
   },
   plugins: [
-    new webpack.HashedModuleIdsPlugin(),
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     }),

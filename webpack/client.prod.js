@@ -14,6 +14,7 @@ module.exports = {
   ],
   output: {
     filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, '../buildClient'),
     publicPath: '/static/'
   },
@@ -44,7 +45,6 @@ module.exports = {
   plugins: [
     new StatsPlugin('stats.json'),
     new ExtractCssChunks(),
-    new webpack.HashedModuleIdsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
       filename: '[name].[chunkhash].js',
