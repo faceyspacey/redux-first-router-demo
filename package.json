@@ -34,6 +34,7 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-first-router": "^1.7.4",
     "redux-first-router-link": "^1.0.7",
+    "webpack-dev-middleware": "^1.11.0",
     "webpack-flush-chunks": "^1.1.10"
   },
   "devDependencies": {
@@ -66,7 +67,6 @@
     "stats-webpack-plugin": "^0.5.0",
     "travis-github-status": "^1.4.0",
     "webpack": "^3.0.0",
-    "webpack-dev-middleware-multi-compiler": "^1.0.0",
     "webpack-hot-middleware": "^2.17.1",
     "webpack-hot-server-middleware": "^0.1.0",
     "write-file-webpack-plugin": "^4.1.0"
