@@ -6,6 +6,9 @@ For the client-only codesandbox you can start tinkering with in one more click, 
 
 **https://codesandbox.io/s/github/faceyspacey/redux-first-router-codesandbox**
 
+And for some tips of what to do in both the sandbox and this repo, check the article about it:
+https://medium.com/faceyspacey/redux-first-router-lookin-sexy-on-code-sandbox-d9d9bea15053
+
 
 ![redux-first-router-demo screenshot](./screenshot.png)
 
