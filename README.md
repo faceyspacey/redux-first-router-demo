@@ -1,3 +1,8 @@
+<a href="https://codesandbox.io/s/github/faceyspacey/redux-first-router-codesandbox" target="_blank">
+  <img alt="Edit Redux-First Router Demo" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+
+
 # Universal Demonstration of [Redux-First Router](https://github.com/faceyspacey/redux-first-router)
 
 This demo specializes in SSR and the sort of things like redirecting and authentication you will do on the server.
