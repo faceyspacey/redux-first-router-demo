@@ -2,8 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const WriteFilePlugin = require('write-file-webpack-plugin')
 const AutoDllPlugin = require('autodll-webpack-plugin')
-// const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
-const ExtractCssChunks = require('../../extract-css-chunks-webpack-plugin')
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 
 module.exports = {
   name: 'client',
