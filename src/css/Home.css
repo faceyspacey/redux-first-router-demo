@@ -7,33 +7,48 @@
 }
 
 .home h1 {
-  color: rgb(190,190,190); 
+  color: rgb(253, 208, 157);
+  font-family: Roboto, sans-serif;
   font-size: 18px;
   text-align: center;
   margin-top: 0px;
   text-shadow: 1px 1px 1px rgb(5,5,5);
+  -webkit-font-smoothing: antialiased;
 }
 
 .home h2 {
-  color: rgb(130,130,130); 
+  color: rgb(65, 167, 214); 
+  font-family: Roboto, sans-serif;
   font-size: 16px;
   text-align: center;
   font-weight: normal;
   margin-top: -4px;
-  text-shadow: 1px 1px 1px rgb(5,5,5);
+  -webkit-font-smoothing: antialiased;
 }
 
 .home span {
-  color: rgb(90,90,90); 
+  color: rgb(106, 118, 124); 
   display: block;
-  
-  margin: 16.5px 0px;
+  margin: 8px 0px;
   position: relative;
-  top: -13px;
 }
 
 .home pre {
   margin-top: -20px;
-  color: rgb(90,90,90); 
+  color: rgb(106, 118, 124); 
   font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+span.directions {
+  display: inline;
+  color: rgb(82, 175, 218); 
+}
+
+.articleLinks {
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  font-family: Roboto, sans-serif;
+  text-decoration: underline;
 }

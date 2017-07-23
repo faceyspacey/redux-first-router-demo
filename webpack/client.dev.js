@@ -47,7 +47,7 @@ module.exports = {
     extensions: ['.js', '.css']
   },
   plugins: [
-    new WriteFilePlugin(),
+    new WriteFilePlugin(), // used so you can see what chunks are produced in dev
     new ExtractCssChunks(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
@@ -72,12 +72,11 @@ module.exports = {
           'react-redux',
           'redux',
           'history/createBrowserHistory',
-          'animated-transition-group',
+          'transition-group',
           'redux-first-router',
           'redux-first-router-link',
           'fetch-everywhere',
           'babel-polyfill',
-          'react-hot-loader/lib/AppContainer',
           'redux-devtools-extension/logOnlyInProduction'
         ]
       }

@@ -52,7 +52,14 @@ ajv-keywords@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-2.1.0.tgz#a296e17f7bfae7c1ce4f7e0de53d29cb32162df0"
 
-ajv@^4.11.2, ajv@^4.7.0, ajv@^4.9.1:
+ajv@4.11.2:
+  version "4.11.2"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-4.11.2.tgz#f166c3c11cbc6cb9dcc102a5bcfe5b72c95287e6"
+  dependencies:
+    co "^4.6.0"
+    json-stable-stringify "^1.0.1"
+
+ajv@^4.7.0, ajv@^4.9.1:
   version "4.11.5"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-4.11.5.tgz#b6ee74657b993a01dce44b7944d56f485828d5bd"
   dependencies:
@@ -81,13 +88,6 @@ alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
-
-animated-transition-group@^1.0.22:
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/animated-transition-group/-/animated-transition-group-1.0.22.tgz#aa34a5bd57bc85c954f6861b5aa3f2db2ea9c2ff"
-  dependencies:
-    prop-types "^15.5.10"
-    react-addons-transition-group "^15.4.2"
 
 ansi-escapes@^1.0.0, ansi-escapes@^1.1.0, ansi-escapes@^1.3.0:
   version "1.4.0"
@@ -227,6 +227,12 @@ async-each@^1.0.0:
 async@^2.0.1, async@^2.1.2:
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/async/-/async-2.1.5.tgz#e587c68580994ac67fc56ff86d3ac56bdbe810bc"
+  dependencies:
+    lodash "^4.14.0"
+
+async@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/async/-/async-2.5.0.tgz#843190fd6b7357a0b9e1c956edddd5ec8462b54d"
   dependencies:
     lodash "^4.14.0"
 
@@ -2264,14 +2270,13 @@ extglob@^0.3.1:
   dependencies:
     is-extglob "^1.0.0"
 
-extract-css-chunks-webpack-plugin@latest:
-  version "1.0.15"
-  resolved "https://registry.yarnpkg.com/extract-css-chunks-webpack-plugin/-/extract-css-chunks-webpack-plugin-1.0.15.tgz#5fd6a3c2f68b7be651e136e0959718eddb8f6dd2"
+extract-css-chunks-webpack-plugin@2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/extract-css-chunks-webpack-plugin/-/extract-css-chunks-webpack-plugin-2.0.7.tgz#2258fd961561031c1b03dfe46702b3fdd8364da2"
   dependencies:
-    ajv "^4.11.2"
-    async "^2.1.2"
-    jsesc "^2.5.1"
-    loader-utils "^1.0.2"
+    ajv "4.11.2"
+    async "^2.5.0"
+    loader-utils "^1.1.0"
     schema-utils "^0.3.0"
     style-loader "^0.18.2"
     webpack-sources "^1.0.1"
@@ -3218,10 +3223,6 @@ jsbn@~0.1.0:
 jsesc@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-1.3.0.tgz#46c3fec8c1892b12b0833db9bc7622176dbab34b"
-
-jsesc@^2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-2.5.1.tgz#e421a2a8e20d6b0819df28908f782526b96dd1fe"
 
 jsesc@~0.5.0:
   version "0.5.0"
@@ -5457,6 +5458,13 @@ tough-cookie@~2.3.0:
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.3.2.tgz#f081f76e4c85720e6c37a5faced737150d84072a"
   dependencies:
     punycode "^1.4.1"
+
+transition-group@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/transition-group/-/transition-group-0.0.1.tgz#f92bd6d463f4d265f1192449183db9470c88acaf"
+  dependencies:
+    prop-types "^15.5.10"
+    react-addons-transition-group "^15.4.2"
 
 travis-github-status@^1.4.0:
   version "1.4.0"

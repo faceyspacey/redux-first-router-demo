@@ -52,6 +52,12 @@ const Sidebar = ({ onClick, path }) =>
     >
       FP
     </span>
+
+    <div style={{ height: 14 }} />
+
+    <NavLink to={{ type: 'ADMIN' }} activeClassName={styles.active}>
+      ADMIN
+    </NavLink>
   </div>
 
 const active = (currentPath, path) =>

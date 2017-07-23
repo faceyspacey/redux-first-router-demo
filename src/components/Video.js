@@ -41,6 +41,6 @@ const Video = ({ slug, title, youtubeId, category, by, color, tip }) =>
     </div>
   </div>
 
-const mapState = state => state.videoHash[state.slug] || {}
+const mapState = state => state.videosHash[state.slug] || {}
 
 export default connect(mapState)(Video)

@@ -1,5 +1,5 @@
 .video {
-  background: #000 !important;
+  background: rgb(27, 32, 34) !important;
   border-color: transparent !important;
   display: block !important;
 }
@@ -69,10 +69,10 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border-top: 1px solid #1e1e1e;
-  background: #141414;
+  border-top: 1px solid rgba(50, 50, 60, 1);
+  background: rgb(35, 40, 42);
 }
-.title {
+.videoTitle {
   color: #c8c8c8;
   font-family: Montserrat;
   font-size: 22px;

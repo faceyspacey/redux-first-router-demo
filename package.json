@@ -20,7 +20,6 @@
     "format": "prettier --single-quote --semi=false --write '{src,server,webpack}/**/*.js' && npm run lint"
   },
   "dependencies": {
-    "animated-transition-group": "^1.0.22",
     "babel-polyfill": "^6.23.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
@@ -34,6 +33,7 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-first-router": "^1.7.4",
     "redux-first-router-link": "^1.0.7",
+    "transition-group": "^0.0.1",
     "webpack-dev-middleware": "^1.11.0",
     "webpack-flush-chunks": "^1.1.10"
   },
@@ -58,7 +58,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "extract-css-chunks-webpack-plugin": "latest",
+    "extract-css-chunks-webpack-plugin": "2.0.7",
     "husky": "^0.13.2",
     "lint-staged": "^3.4.0",
     "prettier": "^1.4.4",
