@@ -132,6 +132,7 @@ module.exports = {
           'render'
         ]
       }
-    ]
+    ],
+    'linebreak-style': 0
   }
 }
