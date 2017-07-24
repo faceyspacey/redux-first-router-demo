@@ -1,5 +1,6 @@
 export { default as page } from './page'
 export { default as slug } from './slug'
+export { default as category } from './category'
 export { default as direction } from './direction'
 export { default as videosHash } from './videosHash'
 export { default as videosByCategory } from './videosByCategory'

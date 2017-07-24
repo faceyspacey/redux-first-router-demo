@@ -4826,6 +4826,10 @@ require-universal-module@^1.2.8:
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/require-universal-module/-/require-universal-module-1.2.8.tgz#a333b75f4364832361d4554f43c46b7b6afebecb"
 
+reselect@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
+
 resolve-dir@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/resolve-dir/-/resolve-dir-0.1.1.tgz#b219259a5602fac5c5c496ad894a6e8cc430261e"

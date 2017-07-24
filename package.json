@@ -33,6 +33,7 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-first-router": "^1.7.4",
     "redux-first-router-link": "^1.0.7",
+    "reselect": "^3.0.1",
     "transition-group": "^0.0.1",
     "webpack-dev-middleware": "^1.11.0",
     "webpack-flush-chunks": "^1.1.10"

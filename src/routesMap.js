@@ -9,10 +9,10 @@ export default {
       const {
         jwToken,
         location: { payload: { category } },
-        videosByCategory: { categories }
+        videosByCategory
       } = getState()
 
-      if (categories[category]) return
+      if (videosByCategory[category]) return
       const videos = await fetchData(`/api/videos/${category}`, jwToken)
 
       if (videos.length === 0) {
@@ -97,5 +97,5 @@ if (!video) {
   return dispatch({ type: NOT_FOUND })
 }
 
-dispatch({ type: 'VIDEO_FOUND', payload: video })
+dispatch({ type: 'VIDEO_FOUND', payload: { slug, video } })
 */
