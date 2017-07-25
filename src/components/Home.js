@@ -54,7 +54,7 @@ onClick: () => dispatch({
       href='https://medium.com/faceyspacey/redux-first-router-lookin-sexy-on-code-sandbox-d9d9bea15053'
       rel='noopener noreferrer'
     >
-      THINGS YOU YOU SHOULD PAY ATTENTION TO IN THIS DEMO
+      THINGS TO SHOULD PAY ATTENTION TO IN THIS DEMO
     </a>
 
     <br />
@@ -80,7 +80,7 @@ onClick: () => dispatch({
       href='https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262'
       rel='noopener noreferrer'
     >
-      DATA-FETCHING AND SIMPLER REDUX MIDDLEWARE
+      DATA-FETCHING + SIMPLER REDUX MIDDLEWARE /W RFR
     </a>
   </div>
 
