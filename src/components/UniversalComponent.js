@@ -14,17 +14,14 @@ export default ({ page, isLoading }) => {
 
 const components = {
   Home: universal(() => import('./Home'), {
-    resolve: () => require.resolveWeak('./Home'),
     minDelay: 500, // match sliding animation duration
     loading
   }),
   List: universal(() => import('./List'), {
-    resolve: () => require.resolveWeak('./List'),
     minDelay: 500, // for silky smooth animations
     loading
   }),
   Video: universal(() => import('./Video'), {
-    resolve: () => require.resolveWeak('./Video'),
     minDelay: 500, // i.e. no re-renders during animation
     loading
   }),
