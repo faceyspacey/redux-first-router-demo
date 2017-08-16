@@ -219,7 +219,7 @@
   border: 1px solid rgb(30,30,30);
   box-sizing: border-box;
   padding: 10px;
-  color: red;
+  color: red !important;
   font-size: 32px;
   text-shadow: 1px 1px 1px black;
   display: flex;
