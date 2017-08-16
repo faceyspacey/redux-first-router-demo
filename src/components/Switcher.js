@@ -4,13 +4,14 @@ import { TransitionGroup, Transition } from 'transition-group'
 import universal from 'react-universal-component'
 
 import Loading from './Loading'
+import Err from './Error'
 import isLoading from '../selectors/isLoading'
 import styles from '../css/Switcher'
 
 const UniversalComponent = universal(({ page }) => import(`./${page}`), {
   minDelay: 500,
   loading: Loading,
-  error: Error
+  error: Err
 })
 
 const Switcher = ({ page, direction, isLoading }) =>
