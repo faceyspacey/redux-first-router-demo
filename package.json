@@ -1,6 +1,6 @@
 {
-  "name": "flush-requires-boilerplate-webpack-chunknames",
-  "description": "A boilerplate showing how to achieve Universal Code-Splitting and Universal HMR with react-universal-component, webpack-flush-chunks and extract-css-chunks-webpack-plugin",
+  "name": "redux-first-router-demo",
+  "description": "Universal Redux-First Router Demo",
   "version": "1.0.0",
   "main": "server/index.js",
   "author": "James Gillmore <james@faceyspacey.com>",
