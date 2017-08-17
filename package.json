@@ -28,7 +28,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.5",
-    "react-universal-component": "^2.4.0",
+    "react-universal-component": "^2.5.0",
     "redux": "^3.7.0",
     "redux-devtools-extension": "^2.13.2",
     "redux-first-router": "^1.9.15",

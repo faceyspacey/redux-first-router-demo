@@ -50,5 +50,10 @@ span.directions {
   color: white;
   -webkit-font-smoothing: antialiased;
   font-family: Roboto, sans-serif;
+  text-decoration: none;
+}
+
+.articleLinks:hover {
+  color: purple;
   text-decoration: underline;
 }

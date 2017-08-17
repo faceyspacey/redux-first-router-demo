@@ -4611,11 +4611,12 @@ react-transition-group@^1.2.0:
     prop-types "^15.5.6"
     warning "^3.0.0"
 
-react-universal-component@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/react-universal-component/-/react-universal-component-2.4.0.tgz#27c927e4e72645f724ca4b086240c4a6f331a426"
+react-universal-component@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/react-universal-component/-/react-universal-component-2.5.0.tgz#ffa044ab1188ffe3880d63e0c09d564926e27624"
   dependencies:
     hoist-non-react-statics "^2.2.1"
+    prop-types "^15.5.10"
 
 react@^15.4.2:
   version "15.4.2"
