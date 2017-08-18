@@ -5,7 +5,7 @@
 
 # Universal Demonstration of [Redux-First Router](https://github.com/faceyspacey/redux-first-router)
 
-This demo specializes in SSR and the sort of things like redirecting and authentication you will do on the server.
+This demo specializes in SSR and the sort of things like redirecting and authentication you will do on the server. For the simpler example that's easier to start with, check out the [Redux-First Router Boilerplate](https://github.com/faceyspacey/redux-first-router-boilerplate).
 
 
 
