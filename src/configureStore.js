@@ -7,11 +7,15 @@ import options from './options'
 import * as reducers from './reducers'
 import * as actionCreators from './actions'
 
-export default (history, preLoadedState) => {
+export default (preLoadedState, storeOptions) => {
+  const optionsCombined = {
+    ...options,
+    ...storeOptions
+  }
+
   const { reducer, middleware, enhancer, thunk } = connectRoutes(
-    history,
     routesMap,
-    options
+    optionsCombined
   )
 
   const rootReducer = combineReducers({ ...reducers, location: reducer })

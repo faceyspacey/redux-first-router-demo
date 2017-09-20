@@ -1,4 +1,3 @@
-import createHistory from 'history/createMemoryHistory'
 import { NOT_FOUND } from 'redux-first-router'
 import configureStore from '../src/configureStore'
 
@@ -6,8 +5,16 @@ export default async (req, res) => {
   const jwToken = req.cookies.jwToken // see server/index.js to change jwToken
   const preLoadedState = { jwToken } // onBeforeChange will authenticate using this
 
-  const history = createHistory({ initialEntries: [req.path] })
-  const { store, thunk } = configureStore(history, preLoadedState)
+  const { store, thunk } = configureStore(preLoadedState, {
+    initialEntries: [req.path]
+  })
+  // To change basename, add it to the options like so:
+  /*
+   const { store, thunk } = configureStore(preLoadedState, {
+    initialEntries: [req.path],
+    basename: '/'
+  })
+   */
 
   // if not using onBeforeChange + jwTokens, you can also async authenticate
   // here against your db (i.e. using req.cookies.sessionId)
