@@ -3086,16 +3086,6 @@ hawk@~3.1.3:
     hoek "2.x.x"
     sntp "1.x.x"
 
-history@^4.6.3:
-  version "4.6.3"
-  resolved "https://registry.yarnpkg.com/history/-/history-4.6.3.tgz#6d723a8712c581d6bef37e8c26f4aedc6eb86967"
-  dependencies:
-    invariant "^2.2.1"
-    loose-envify "^1.2.0"
-    resolve-pathname "^2.0.0"
-    value-equal "^0.2.0"
-    warning "^3.0.0"
-
 hmac-drbg@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.0.tgz#3db471f45aae4a994a0688322171f51b8b91bee5"
@@ -5432,19 +5422,20 @@ redux-devtools-extension@^2.13.2:
   version "2.13.2"
   resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.2.tgz#e0f9a8e8dfca7c17be92c7124958a3b94eb2911d"
 
-redux-first-router-link@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/redux-first-router-link/-/redux-first-router-link-1.1.4.tgz#73b9430dfbd7ad52c7126f8b9391c5e06f7f33c6"
+redux-first-router-link@rudy:
+  version "0.0.1-rudy"
+  resolved "http://0.0.0.0:4873/redux-first-router-link/-/redux-first-router-link-0.0.1-rudy.tgz#7fde7de1b0e5fca91c6c3d94573d15771d982742"
   dependencies:
     path-to-regexp "^1.7.0"
     prop-types "15.5.10"
-    rudy-match-path "^0.1.0"
+    rudy-match-path "^0.3.0"
 
-redux-first-router@^1.9.15:
-  version "1.9.15"
-  resolved "https://registry.yarnpkg.com/redux-first-router/-/redux-first-router-1.9.15.tgz#5cb69db77e2fa6d968509bb46fa8949e7a777a2f"
+redux-first-router@rudy:
+  version "0.0.2-rudy"
+  resolved "http://0.0.0.0:4873/redux-first-router/-/redux-first-router-0.0.2-rudy.tgz#d63c236b013a8751eae912db48c96e755916da74"
   dependencies:
-    path-to-regexp "^1.7.0"
+    rudy-history "^1.0.0"
+    rudy-match-path "^0.3.0"
 
 redux@^3.7.0:
   version "3.7.0"
@@ -5628,9 +5619,9 @@ resolve-from@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-1.0.1.tgz#26cbfe935d1aeeeabb29bc3fe5aeb01e93d44226"
 
-resolve-pathname@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/resolve-pathname/-/resolve-pathname-2.1.0.tgz#e8358801b86b83b17560d4e3c382d7aef2100944"
+resolve-pathname@^2.2.0:
+  version "2.2.0"
+  resolved "http://0.0.0.0:4873/resolve-pathname/-/resolve-pathname-2.2.0.tgz#7e9ae21ed815fd63ab189adeee64dc831eefa879"
 
 resolve@1.1.7:
   version "1.1.7"
@@ -5687,9 +5678,19 @@ rmdir@^1.2.0:
   dependencies:
     node.flow "1.2.3"
 
-rudy-match-path@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/rudy-match-path/-/rudy-match-path-0.1.0.tgz#5811458b234cab3502a4e548a5dedf527549a294"
+rudy-history@*, rudy-history@^1.0.0:
+  version "1.0.0"
+  resolved "http://0.0.0.0:4873/rudy-history/-/rudy-history-1.0.0.tgz#6e716bfea7b6dc00768a9423ace964fd0f168127"
+  dependencies:
+    invariant "^2.2.1"
+    loose-envify "^1.2.0"
+    resolve-pathname "^2.2.0"
+    value-equal "^0.4.0"
+    warning "^3.0.0"
+
+rudy-match-path@^0.3.0:
+  version "0.3.0"
+  resolved "http://0.0.0.0:4873/rudy-match-path/-/rudy-match-path-0.3.0.tgz#c90e23caac500f244d5e4ab448e2725f1254e2e8"
   dependencies:
     path-to-regexp "^1.7.0"
 
@@ -6517,9 +6518,9 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "~1.0.0"
     spdx-expression-parse "~1.0.0"
 
-value-equal@^0.2.0:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/value-equal/-/value-equal-0.2.1.tgz#c220a304361fce6994dbbedaa3c7e1a1b895871d"
+value-equal@^0.4.0:
+  version "0.4.0"
+  resolved "http://0.0.0.0:4873/value-equal/-/value-equal-0.4.0.tgz#c5bdd2f54ee093c04839d71ce2e4758a6890abc7"
 
 vary@~1.1.0:
   version "1.1.0"

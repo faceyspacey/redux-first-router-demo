@@ -12,7 +12,7 @@ module.exports = {
   entry: [
     'babel-polyfill',
     'fetch-everywhere',
-    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false',
+    'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr&timeout=20000&reload=true&quiet=false&noInfo=false',
     'react-hot-loader/patch',
     path.resolve(__dirname, '../src/index.js')
   ],
