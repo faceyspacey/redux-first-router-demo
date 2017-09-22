@@ -5422,17 +5422,18 @@ redux-devtools-extension@^2.13.2:
   version "2.13.2"
   resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.2.tgz#e0f9a8e8dfca7c17be92c7124958a3b94eb2911d"
 
-redux-first-router-link@rudy:
-  version "0.0.1-rudy"
-  resolved "http://0.0.0.0:4873/redux-first-router-link/-/redux-first-router-link-0.0.1-rudy.tgz#7fde7de1b0e5fca91c6c3d94573d15771d982742"
+redux-first-router-link@0.0.2-rudy:
+  version "0.0.2-rudy"
+  resolved "https://registry.yarnpkg.com/redux-first-router-link/-/redux-first-router-link-0.0.2-rudy.tgz#f70bd1ecde7443998402b0c762b5b02016c72904"
   dependencies:
     path-to-regexp "^1.7.0"
     prop-types "15.5.10"
+    rudy-history "^1.0.0"
     rudy-match-path "^0.3.0"
 
-redux-first-router@rudy:
-  version "0.0.2-rudy"
-  resolved "http://0.0.0.0:4873/redux-first-router/-/redux-first-router-0.0.2-rudy.tgz#d63c236b013a8751eae912db48c96e755916da74"
+redux-first-router@0.0.3-rudy:
+  version "0.0.3-rudy"
+  resolved "https://registry.yarnpkg.com/redux-first-router/-/redux-first-router-0.0.3-rudy.tgz#6d478f33264201744435799a4f536442f80f03c0"
   dependencies:
     rudy-history "^1.0.0"
     rudy-match-path "^0.3.0"
@@ -5678,7 +5679,7 @@ rmdir@^1.2.0:
   dependencies:
     node.flow "1.2.3"
 
-rudy-history@*, rudy-history@^1.0.0:
+rudy-history@^1.0.0:
   version "1.0.0"
   resolved "http://0.0.0.0:4873/rudy-history/-/rudy-history-1.0.0.tgz#6e716bfea7b6dc00768a9423ace964fd0f168127"
   dependencies:

@@ -5,9 +5,7 @@ export default async (req, res) => {
   const jwToken = req.cookies.jwToken // see server/index.js to change jwToken
   const preLoadedState = { jwToken } // onBeforeChange will authenticate using this
 
-  const { store, thunk } = configureStore(preLoadedState, {
-    initialEntries: [req.path]
-  })
+  const { store, thunk } = configureStore(preLoadedState, [req.path])
   // To change basename, add it to the options like so:
   /*
    const { store, thunk } = configureStore(preLoadedState, {

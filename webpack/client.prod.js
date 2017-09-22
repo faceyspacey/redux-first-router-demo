@@ -81,7 +81,7 @@ module.exports = {
           'react-dom',
           'react-redux',
           'redux',
-          'history/createBrowserHistory',
+          'rudy-history/createBrowserHistory',
           'transition-group',
           'redux-first-router',
           'redux-first-router-link',
