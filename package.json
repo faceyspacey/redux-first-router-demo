@@ -12,7 +12,7 @@
     "build": "npm run build:client && npm run build:server && npm run build:node",
     "build:client": "rimraf buildClient && cross-env NODE_ENV=production webpack --progress -p --config webpack/client.prod.js",
     "build:server": "rimraf buildServer && cross-env NODE_ENV=production webpack --progress -p --config webpack/server.prod.js",
-    "build:node": "cross-env NODE_ENV=production babel server/index.js -o buildServer/index.js && babel server/api.js -o buildServer/api.js",
+    "build:node": "cross-env NODE_ENV=production babel server -d buildServer --ignore configureStore,render",
     "clean": "rimraf buildClient buildServer",
     "precommit": "lint-staged --verbose",
     "cm": "git-cz",
