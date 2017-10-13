@@ -30,7 +30,8 @@ module.exports = {
   output: {
     path: res('../buildServer'),
     filename: '[name].js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
+    publicPath: '/static/'
   },
   module: {
     rules: [
