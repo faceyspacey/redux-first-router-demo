@@ -3,8 +3,6 @@ import { isAllowed, isServer } from './utils'
 
 export default {
   onBeforeChange: (dispatch, getState, { action }) => {
-    console.log('action')
-    console.log(action)
     const allowed = isAllowed(action.type, getState())
 
     if (!allowed) {
