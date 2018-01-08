@@ -38,7 +38,7 @@
     "webpack-flush-chunks": "^1.1.22"
   },
   "devDependencies": {
-    "autodll-webpack-plugin": "^0.3.2",
+    "autodll-webpack-plugin": "^0.3.4",
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
     "babel-eslint": "^8.0.1",
