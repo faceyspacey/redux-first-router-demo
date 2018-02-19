@@ -6,7 +6,7 @@ import Switcher from './Switcher'
 
 import styles from '../css/App'
 
-export default () =>
+export default () => (
   <div>
     <div className={styles.app}>
       <Sidebar />
@@ -15,3 +15,4 @@ export default () =>
 
     <DevTools />
   </div>
+)

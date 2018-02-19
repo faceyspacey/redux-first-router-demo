@@ -17,7 +17,7 @@
     "precommit": "lint-staged",
     "cm": "git-cz",
     "lint": "eslint --fix src server webpack",
-    "format": "prettier --single-quote --semi=false --write '{src,server,webpack}/**/*.js' && npm run lint"
+    "format": "npm run lint"
   },
   "dependencies": {
     "cookie-parser": "^1.4.3",
@@ -54,14 +54,16 @@
     "cz-conventional-changelog": "^2.0.0",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.0.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-flowtype": "^2.32.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.4.0",
     "extract-css-chunks-webpack-plugin": "^2.0.15",
-    "flow-bin": "^0.57.2",
+    "flow-bin": "^0.66.0",
     "husky": "^0.14.3",
-    "jest": "^21.2.1",
+    "jest": "^22.3.0",
     "lint-staged": "^6.1.1",
     "prettier": "^1.4.4",
     "react-hot-loader": "^3.0.0",

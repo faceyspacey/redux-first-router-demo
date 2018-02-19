@@ -8,8 +8,16 @@ module.exports = {
     sourceType: 'module',
     allowImportExportEverywhere: false
   },
-  plugins: ['flowtype'],
-  extends: ['airbnb', 'plugin:flowtype/recommended'],
+  plugins: ['react', 'flowtype', 'prettier'],
+  extends: [
+    'airbnb',
+    'plugin:react/recommended',
+    'plugin:flowtype/recommended',
+    'plugin:prettier/recommended',
+    'prettier',
+    'prettier/flowtype',
+    'prettier/react'
+  ],
   settings: {
     flowtype: {
       onlyFilesWithFlowAnnotation: true
@@ -37,6 +45,18 @@ module.exports = {
     alert: true
   },
   rules: {
+    /*
+     * Runs Prettier as an ESLint rule and reports differences as individual ESLint issues.
+     * https://github.com/prettier/eslint-plugin-prettier
+     */
+    'prettier/prettier': [
+      'error',
+      {
+        semi: false,
+        singleQuote: true,
+        trailingComma: 'none'
+      }
+    ],
     'import/extensions': [
       'error',
       'always',
@@ -71,11 +91,9 @@ module.exports = {
     'no-case-declarations': 1,
     semi: [2, 'never'],
     'flowtype/semi': [2, 'never'],
-    'jsx-quotes': [2, 'prefer-single'],
     'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.js'] }],
     'spaced-comment': [2, 'always', { markers: ['?'] }],
     'arrow-parens': [2, 'as-needed', { requireForBlockBody: false }],
-    'brace-style': [2, 'stroustrup'],
     'import/no-unresolved': [2, { commonjs: true, caseSensitive: true }],
     'no-unused-expressions': [
       2,
@@ -115,6 +133,7 @@ module.exports = {
         ignoreTemplateLiterals: true
       }
     ],
+    'react/display-name': 0,
     'react/sort-comp': [
       2,
       {
@@ -132,7 +151,6 @@ module.exports = {
           'render'
         ]
       }
-    ],
-    'linebreak-style': 0
+    ]
   }
 }
