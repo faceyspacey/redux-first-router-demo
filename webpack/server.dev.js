@@ -26,7 +26,7 @@ module.exports = {
   target: 'node',
   // devtool: 'source-map',
   devtool: 'eval',
-  entry: ['babel-polyfill', 'fetch-everywhere', res('../server/render.js')],
+  entry: ['fetch-everywhere', res('../server/render.js')],
   externals,
   output: {
     path: res('../buildServer'),

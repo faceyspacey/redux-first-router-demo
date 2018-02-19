@@ -1,16 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Link, { NavLink } from 'redux-first-router-link'
+import { NavLink } from 'redux-first-router-link'
 import { goToPage } from '../actions'
 import styles from '../css/Sidebar'
 
-const Sidebar = ({ onClick, path }) =>
+const Sidebar = ({ onClick, path }) => (
   <div className={styles.sidebar}>
     <h2>SEO-FRIENDLY LINKS</h2>
 
-    <NavLink activeClassName={styles.active} exact to='/'>HOME</NavLink>
+    <NavLink activeClassName={styles.active} exact to="/">
+      HOME
+    </NavLink>
 
-    <NavLink activeClassName={styles.active} to='/list/db-graphql'>
+    <NavLink activeClassName={styles.active} to="/list/db-graphql">
       DB & GRAPHQL
     </NavLink>
 
@@ -28,10 +30,12 @@ const Sidebar = ({ onClick, path }) =>
     <div style={{ height: 20 }} />
     <h2>EVENT HANDLERS</h2>
 
+    {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
     <span className={active(path, '/')} onClick={() => onClick('HOME')}>
       HOME
     </span>
 
+    {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
     <span
       className={active(path, '/list/db-graphql')}
       onClick={() => onClick('LIST', 'db-graphql')}
@@ -39,6 +43,7 @@ const Sidebar = ({ onClick, path }) =>
       DB & GRAPHQL
     </span>
 
+    {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
     <span
       className={active(path, '/list/react-redux')}
       onClick={() => onClick('LIST', 'react-redux')}
@@ -46,6 +51,7 @@ const Sidebar = ({ onClick, path }) =>
       REACT & REDUX
     </span>
 
+    {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
     <span
       className={active(path, '/list/fp')}
       onClick={() => onClick('LIST', 'fp')}
@@ -59,6 +65,7 @@ const Sidebar = ({ onClick, path }) =>
       ADMIN
     </NavLink>
   </div>
+)
 
 const active = (currentPath, path) =>
   currentPath === path ? styles.active : ''

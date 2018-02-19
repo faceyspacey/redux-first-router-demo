@@ -1,4 +1,3 @@
-import 'babel-polyfill'
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import webpack from 'webpack'
@@ -10,7 +9,7 @@ import serverConfig from '../webpack/server.dev'
 import { findVideos, findVideo } from './api'
 
 const DEV = process.env.NODE_ENV === 'development'
-const publicPath = clientConfig.output.publicPath
+const { publicPath } = clientConfig.output
 const outputPath = clientConfig.output.path
 const app = express()
 
@@ -50,7 +49,9 @@ if (DEV) {
   const multiCompiler = webpack([clientConfig, serverConfig])
   const clientCompiler = multiCompiler.compilers[0]
 
-  app.use(webpackDevMiddleware(multiCompiler, { publicPath, stats: { colors: true } }))
+  app.use(
+    webpackDevMiddleware(multiCompiler, { publicPath, stats: { colors: true } })
+  )
   app.use(webpackHotMiddleware(clientCompiler))
   app.use(
     // keeps serverRender updated with arg: { clientStats, outputPath }
@@ -58,15 +59,14 @@ if (DEV) {
       serverRendererOptions: { outputPath }
     })
   )
-}
-else {
-  const clientStats = require('../buildClient/stats.json') // eslint-disable-line import/no-unresolved
-  const serverRender = require('../buildServer/main.js').default // eslint-disable-line import/no-unresolved
+} else {
+  const clientStats = require('../buildClient/stats.json') // eslint-disable-line import/no-unresolved, global-require
+  const serverRender = require('../buildServer/main.js').default // eslint-disable-line import/no-unresolved, global-require
 
   app.use(publicPath, express.static(outputPath))
   app.use(serverRender({ clientStats, outputPath }))
 }
 
 app.listen(3000, () => {
-  console.log('Listening @ http://localhost:3000/')
+  console.log('Listening @ http://localhost:3000/') // eslint-disable-line no-console
 })
