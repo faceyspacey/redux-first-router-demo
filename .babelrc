@@ -1,14 +1,21 @@
 {
   "presets": [
-    "env",
-    "react",
-    "stage-2"
+    ["@babel/preset-env", {
+      "modules": "commonjs",
+      "targets": {
+        "browsers": ["last 2 versions"],
+        "node": "current"
+      },
+      "useBuiltIns": "usage"
+    }],
+    "@babel/preset-react",
+    "@babel/preset-stage-2"
   ],
-  
+
   "plugins": [
     "universal-import"
   ],
-  
+
   "env": {
     "development": {
       "plugins": [

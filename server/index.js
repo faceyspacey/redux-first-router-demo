@@ -1,4 +1,3 @@
-import 'babel-polyfill'
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import webpack from 'webpack'
@@ -58,8 +57,7 @@ if (DEV) {
       serverRendererOptions: { outputPath }
     })
   )
-}
-else {
+} else {
   const clientStats = require('../buildClient/stats.json') // eslint-disable-line import/no-unresolved
   const serverRender = require('../buildServer/main.js').default // eslint-disable-line import/no-unresolved
 

@@ -8,11 +8,7 @@ module.exports = {
   name: 'client',
   target: 'web',
   devtool: 'source-map',
-  entry: [
-    'babel-polyfill',
-    'fetch-everywhere',
-    path.resolve(__dirname, '../src/index.js')
-  ],
+  entry: ['fetch-everywhere', path.resolve(__dirname, '../src/index.js')],
   output: {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].js',
@@ -86,7 +82,6 @@ module.exports = {
           'redux-first-router',
           'redux-first-router-link',
           'fetch-everywhere',
-          'babel-polyfill',
           'redux-devtools-extension/logOnlyInProduction'
         ]
       },
