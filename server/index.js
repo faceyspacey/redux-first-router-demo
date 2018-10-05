@@ -52,7 +52,9 @@ if (DEV) {
   const multiCompiler = webpack([clientConfig, serverConfig])
   const clientCompiler = multiCompiler.compilers[0]
 
-  app.use(webpackDevMiddleware(multiCompiler, { publicPath }))
+  app.use(
+    webpackDevMiddleware(multiCompiler, { publicPath, stats: { colors: true } })
+  )
   app.use(webpackHotMiddleware(clientCompiler))
   app.use(
     // keeps serverRender updated with arg: { clientStats, outputPath }
