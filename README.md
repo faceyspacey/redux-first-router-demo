@@ -30,7 +30,7 @@ yarn start
 *client code:*
 - [***src/configureStore.js***](./src/configureStore.js) - *(nothing new here)*
 - [***src/components/Switcher.js***](./src/components/Switcher.js) - *(universal component concept)*
-- [***src/components/UniversalComponent.js***](./src/components/UniversalComponent.js) - ***(universal component concept continued...)***
+- [***src/components/UniversalComponent.js***](./src/UniversalComponent.js) - ***(universal component concept continued...)***
 - [***src/components/Sidebar.js***](./src/components/Sidebar.js) - *(look at the different ways to link + dispatch URL-aware actions)*
 - [***src/reducers/index.js***](./src/reducers/index.js) -  *(observe simplicity of the `page` reducer. Also be cognizant of non-route action types)*
 
