@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import createHistory from 'history/createBrowserHistory'
-import AppContainer from 'react-hot-loader/lib/AppContainer'
+import { AppContainer } from 'react-hot-loader'
 import App from './components/App'
 import configureStore from './configureStore'
 
-const history = createHistory()
-const { store } = configureStore(history, window.REDUX_STATE)
+const { store } = configureStore(window.REDUX_STATE)
+// To change basename, put there the second param:
+// const { store } = configureStore(window.REDUX_STATE, { basename: '/somewhere' })
 
 const render = App => {
   const root = document.getElementById('root')

@@ -2,7 +2,7 @@ import { redirect } from 'redux-first-router'
 import { isAllowed, isServer } from './utils'
 
 export default {
-  onBeforeChange: (dispatch, getState, action) => {
+  onBeforeChange: (dispatch, getState, { action }) => {
     const allowed = isAllowed(action.type, getState())
 
     if (!allowed) {

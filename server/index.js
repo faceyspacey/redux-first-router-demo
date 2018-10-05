@@ -5,6 +5,7 @@ import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpackHotServerMiddleware from 'webpack-hot-server-middleware'
+import nofavicon from 'express-no-favicons'
 import clientConfig from '../webpack/client.dev'
 import serverConfig from '../webpack/server.dev'
 import { findVideos, findVideo } from './api'
@@ -17,6 +18,7 @@ const app = express()
 // JWTOKEN COOKIE - in a real app obviously you set this after signup/login:
 
 app.use(cookieParser())
+app.use(nofavicon())
 
 app.use((req, res, next) => {
   const cookie = req.cookies.jwToken
@@ -50,7 +52,9 @@ if (DEV) {
   const multiCompiler = webpack([clientConfig, serverConfig])
   const clientCompiler = multiCompiler.compilers[0]
 
-  app.use(webpackDevMiddleware(multiCompiler, { publicPath, stats: { colors: true } }))
+  app.use(
+    webpackDevMiddleware(multiCompiler, { publicPath, stats: { colors: true } })
+  )
   app.use(webpackHotMiddleware(clientCompiler))
   app.use(
     // keeps serverRender updated with arg: { clientStats, outputPath }
