@@ -5994,9 +5994,9 @@ redux-first-router-link@0.0.3-next:
     prop-types "15.5.10"
     rudy-match-path "^0.1.0"
 
-redux-first-router@0.0.9-rudy:
-  version "0.0.9-rudy"
-  resolved "http://registry.npmjs.org/redux-first-router/-/redux-first-router-0.0.9-rudy.tgz#ecf15321b5c4589a47ca66916787862622084c0c"
+redux-first-router@^2.0.1-beta.0:
+  version "2.0.1-beta.0"
+  resolved "https://registry.yarnpkg.com/redux-first-router/-/redux-first-router-2.0.1-beta.0.tgz#359b5b7ff03d652182a0873046a786fa5436d809"
   dependencies:
     rudy-history "^1.0.0"
     rudy-match-path "^0.3.0"
