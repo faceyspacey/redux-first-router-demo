@@ -1,4 +1,6 @@
 import routesMap from './routesMap'
+
+require('babel-polyfill')
 // import jwt from 'jsonwebtoken'
 
 export const isServer = typeof window === 'undefined'

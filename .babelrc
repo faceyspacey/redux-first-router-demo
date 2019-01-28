@@ -2,13 +2,13 @@
   "presets": [
     "env",
     "react",
-    "stage-2"
+    "stage-0"
   ],
-  
+
   "plugins": [
     "universal-import"
   ],
-  
+
   "env": {
     "development": {
       "plugins": [

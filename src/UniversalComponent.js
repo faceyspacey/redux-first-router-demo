@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import universal from 'react-universal-component'
 import Loading from './components/Loading'
-import NotFound from './components/NotFound'
 
 // small function that allows page to be a string or a dynamic import function
 // <UniversalComponent page={()=>{import('../../someFolder/Component.js')}}
@@ -16,7 +15,7 @@ const UniversalComponent = universal(determineHowToLoad, {
   },
   minDelay: 1200,
   loading: Loading,
-  error: NotFound
+  ignoreBabelRename: true
 })
 
 UniversalComponent.propTypes = {

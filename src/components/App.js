@@ -1,4 +1,5 @@
 import React from 'react'
+import { hot } from 'react-hot-loader/root'
 
 import DevTools from './DevTools'
 import Sidebar from './Sidebar'
@@ -6,7 +7,7 @@ import Switcher from './Switcher'
 
 import styles from '../css/App'
 
-export default () =>
+const App = () => (
   <div>
     <div className={styles.app}>
       <Sidebar />
@@ -15,3 +16,6 @@ export default () =>
 
     <DevTools />
   </div>
+)
+
+export default hot(App)

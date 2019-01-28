@@ -18,7 +18,6 @@ const app = express()
 // JWTOKEN COOKIE - in a real app obviously you set this after signup/login:
 
 app.use(cookieParser())
-app.use(nofavicon())
 
 app.use((req, res, next) => {
   const cookie = req.cookies.jwToken
@@ -33,7 +32,6 @@ app.use((req, res, next) => {
 })
 
 // API
-
 app.get('/api/videos/:category', async (req, res) => {
   const jwToken = req.headers.authorization.split(' ')[1]
   const data = await findVideos(req.params.category, jwToken)
@@ -49,19 +47,26 @@ app.get('/api/video/:slug', async (req, res) => {
 // UNIVERSAL HMR + STATS HANDLING GOODNESS:
 
 if (DEV) {
-  const multiCompiler = webpack([clientConfig, serverConfig])
-  const clientCompiler = multiCompiler.compilers[0]
+  const compiler = webpack([clientConfig, serverConfig])
+  const clientCompiler = compiler.compilers[0]
+  const options = {
+    publicPath: clientConfig.output.publicPath,
+    stats: { colors: true }
+  }
+  const devMiddleware = webpackDevMiddleware(compiler, options)
 
-  app.use(
-    webpackDevMiddleware(multiCompiler, { publicPath, stats: { colors: true } })
-  )
+  app.use('/favicon.ico', (req, res) => {
+    res.send('')
+  })
+
+  // into our middleware along with the webpack compiler
+  app.use(devMiddleware)
+
+  // this adds hot reloading
   app.use(webpackHotMiddleware(clientCompiler))
-  app.use(
-    // keeps serverRender updated with arg: { clientStats, outputPath }
-    webpackHotServerMiddleware(multiCompiler, {
-      serverRendererOptions: { outputPath }
-    })
-  )
+
+  // this add hot reloading to the actual node server <3, not required but nice to have
+  app.use(webpackHotServerMiddleware(compiler))
 }
 else {
   const clientStats = require('../buildClient/stats.json') // eslint-disable-line import/no-unresolved
