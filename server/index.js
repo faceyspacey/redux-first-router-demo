@@ -1,4 +1,5 @@
-import 'babel-polyfill'
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import webpack from 'webpack'
@@ -11,7 +12,7 @@ import serverConfig from '../webpack/server.dev'
 import { findVideos, findVideo } from './api'
 
 const DEV = process.env.NODE_ENV === 'development'
-const publicPath = clientConfig.output.publicPath
+const { publicPath } = clientConfig.output
 const outputPath = clientConfig.output.path
 const app = express()
 
@@ -72,8 +73,8 @@ else {
   const clientStats = require('../buildClient/stats.json') // eslint-disable-line import/no-unresolved
   const serverRender = require('../buildServer/main.js').default // eslint-disable-line import/no-unresolved
 
-  app.use(publicPath, express.static(outputPath))
   app.use(serverRender({ clientStats, outputPath }))
+  app.use(publicPath, express.static(outputPath))
 }
 
 app.listen(3000, () => {

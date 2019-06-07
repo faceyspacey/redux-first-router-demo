@@ -1,4 +1,5 @@
 import { redirect, NOT_FOUND } from 'redux-first-router'
+// eslint-disable-next-line import/no-cycle
 import { fetchData } from './utils'
 
 export default {
@@ -8,7 +9,9 @@ export default {
     thunk: async (dispatch, getState) => {
       const {
         jwToken,
-        location: { payload: { category } },
+        location: {
+          payload: { category }
+        },
         videosByCategory
       } = getState()
 

@@ -1,2 +1,1 @@
-export default (state = null, action = {}) =>
-  (action.type === 'TOKEN' && action.payload) || state
+export default (state = null, action = {}) => (action.type === 'TOKEN' && action.payload) || state

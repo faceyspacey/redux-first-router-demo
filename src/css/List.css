@@ -1,6 +1,6 @@
 .list {
   background: #141414;
-  border: 1px solid rgb(30,30,30);
+  border: 1px solid rgb(30, 30, 30);
   box-sizing: border-box;
   display: block !important;
 }
@@ -17,14 +17,14 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   text-decoration: none;
   margin: 0px;
 }
@@ -44,11 +44,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 .title {
   margin-top: 2%;
@@ -56,9 +56,9 @@
   font-size: 24px;
   font-weight: bold;
   color: #fff;
-  text-shadow: 1px 1px 1px rgba(4,10,40,0.6);
+  text-shadow: 1px 1px 1px rgba(4, 10, 40, 0.6);
   z-index: 1;
-  background: rgba(253, 203, 140, .5);
+  background: rgba(253, 203, 140, 0.5);
   padding: 5px;
 }
 .gradient {
@@ -67,8 +67,20 @@
   bottom: 0;
   width: 100%;
   height: 25px;
-  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(2,5,10,0.8) 69%, rgba(2,5,10,0.8) 69%, rgba(2,5,10,0.99) 100%);
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(2,5,10,0.8) 69%, rgba(2,5,10,0.8) 69%, rgba(2,5,10,0.99) 100%);
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(2, 5, 10, 0.8) 69%,
+    rgba(2, 5, 10, 0.8) 69%,
+    rgba(2, 5, 10, 0.99) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(2, 5, 10, 0.8) 69%,
+    rgba(2, 5, 10, 0.8) 69%,
+    rgba(2, 5, 10, 0.99) 100%
+  );
   z-index: 0;
 }
 .by {
@@ -79,4 +91,3 @@
   font-size: 12px;
   text-shadow: 1px 1px 1px #000;
 }
-

@@ -3,7 +3,7 @@ export default (state = 'next', action = {}) => {
     return state
   }
 
-  const type = action.type
+  const { type } = action
   const prevType = action.meta.location.prev.type
 
   if (type === prevType) {
@@ -12,22 +12,22 @@ export default (state = 'next', action = {}) => {
   if (type === 'HOME') {
     return 'back'
   }
-  else if (type === 'LIST' && prevType === 'HOME') {
+  if (type === 'LIST' && prevType === 'HOME') {
     return 'next'
   }
-  else if (type === 'LIST' && prevType === 'VIDEO') {
+  if (type === 'LIST' && prevType === 'VIDEO') {
     return 'back'
   }
-  else if (type === 'LIST' && prevType === 'PLAY') {
+  if (type === 'LIST' && prevType === 'PLAY') {
     return 'back'
   }
-  else if (type === 'VIDEO' && prevType === 'LIST') {
+  if (type === 'VIDEO' && prevType === 'LIST') {
     return 'next'
   }
-  else if (type === 'LOGIN') {
+  if (type === 'LOGIN') {
     return 'back'
   }
-  else if (type === 'ADMIN') {
+  if (type === 'ADMIN') {
     return 'next'
   }
 

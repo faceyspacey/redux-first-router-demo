@@ -37,7 +37,8 @@ export default ({ clientStats }) => async (req, res, next) => {
   )
 }
 
-const createApp = (App, store) =>
+const createApp = (App, store) => (
   <Provider store={store}>
     <App />
   </Provider>
+)

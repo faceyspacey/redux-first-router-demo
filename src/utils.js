@@ -1,17 +1,18 @@
+import fetch from 'node-fetch'
+// eslint-disable-next-line import/no-cycle
 import routesMap from './routesMap'
-
-require('babel-polyfill')
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 // import jwt from 'jsonwebtoken'
 
 export const isServer = typeof window === 'undefined'
 
-export const fetchData = async (path, jwToken) =>
-  fetch(`http://localhost:3000${path}`, {
-    headers: {
-      Accept: 'application/json',
-      Authorization: `Bearer ${jwToken || ''}`
-    }
-  }).then(data => data.json())
+export const fetchData = async (path, jwToken) => fetch(`http://localhost:3000${path}`, {
+  headers: {
+    Accept: 'application/json',
+    Authorization: `Bearer ${jwToken || ''}`
+  }
+}).then(data => data.json())
 
 export const isAllowed = (type, state) => {
   const role = routesMap[type] && routesMap[type].role // you can put arbitrary keys in routes

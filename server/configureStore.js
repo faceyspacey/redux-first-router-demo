@@ -2,7 +2,7 @@ import { NOT_FOUND } from 'redux-first-router'
 import configureStore from '../src/configureStore'
 
 export default async (req, res) => {
-  const jwToken = req.cookies.jwToken // see server/index.js to change jwToken
+  const { jwToken } = req.cookies // see server/index.js to change jwToken
   const preLoadedState = { jwToken } // onBeforeChange will authenticate using this
 
   const { store, thunk } = configureStore(preLoadedState, [req.path])
@@ -17,7 +17,7 @@ export default async (req, res) => {
   // if not using onBeforeChange + jwTokens, you can also async authenticate
   // here against your db (i.e. using req.cookies.sessionId)
 
-  let location = store.getState().location
+  let { location } = store.getState()
   if (doesRedirect(location, res)) return false
 
   // using redux-thunk perhaps request and dispatch some app-wide state as well, e.g:
@@ -25,6 +25,7 @@ export default async (req, res) => {
 
   await thunk(store) // THE PAYOFF BABY!
 
+  // eslint-disable-next-line prefer-destructuring
   location = store.getState().location // remember: state has now changed
   if (doesRedirect(location, res)) return false // only do this again if ur thunks have redirects
 

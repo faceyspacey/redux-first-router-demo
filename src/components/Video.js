@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 import Player from './Player'
 import styles from '../css/Video'
 
-const Video = ({ slug, title, youtubeId, category, by, color, tip }) =>
+const Video = ({
+  slug, title, youtubeId, category, by, color, tip
+}) => (
   <div className={styles.video}>
     <Player slug={slug} youtubeId={youtubeId} color={color} />
 
@@ -16,7 +18,10 @@ const Video = ({ slug, title, youtubeId, category, by, color, tip }) =>
           <span>{category}</span>
         </div>
 
-        <span className={styles.byText}>by: {by}</span>
+        <span className={styles.byText}>
+by:
+          {by}
+        </span>
       </div>
 
       <div className={styles.separator} />
@@ -25,7 +30,8 @@ const Video = ({ slug, title, youtubeId, category, by, color, tip }) =>
       <div className={styles.tip}>
         {slug
           ? tip
-          : <span style={{ color: 'orange' }}>
+          : (
+            <span style={{ color: 'orange' }}>
               YOU FOUND A MISSING FEATURE!
               There is no data because you Refreshed the video page,
               whose data is fetched on the previous page. Try adding a thunk
@@ -36,10 +42,12 @@ const Video = ({ slug, title, youtubeId, category, by, color, tip }) =>
               <span style={{ color: 'white' }}> findVideo(slug) </span>
               method in
               <span style={{ color: 'white' }}>../api/index.js:</span>
-          </span>}
+            </span>
+          )}
       </div>
     </div>
   </div>
+)
 
 const mapState = state => state.videosHash[state.slug] || {}
 

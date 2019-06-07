@@ -4,7 +4,7 @@ import Link, { NavLink } from 'redux-first-router-link'
 import { goToPage } from '../actions'
 import styles from '../css/Sidebar'
 
-const Sidebar = ({ onClick, path }) =>
+const Sidebar = ({ onClick, path }) => (
   <div className={styles.sidebar}>
     <h2>SEO-FRIENDLY LINKS</h2>
 
@@ -59,9 +59,9 @@ const Sidebar = ({ onClick, path }) =>
       ADMIN
     </NavLink>
   </div>
+)
 
-const active = (currentPath, path) =>
-  currentPath === path ? styles.active : ''
+const active = (currentPath, path) => currentPath === path ? styles.active : ''
 
 const mapDispatch = { onClick: goToPage }
 const mapState = ({ location }) => ({ path: location.pathname })

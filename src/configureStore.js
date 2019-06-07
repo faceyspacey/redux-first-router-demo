@@ -1,4 +1,6 @@
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
+import {
+  createStore, applyMiddleware, compose, combineReducers
+} from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction'
 import { connectRoutes } from 'redux-first-router'
 
@@ -8,7 +10,9 @@ import * as reducers from './reducers'
 import * as actionCreators from './actions'
 
 export default (preLoadedState, initialEntries) => {
-  const { reducer, middleware, enhancer, thunk } = connectRoutes(routesMap, {
+  const {
+    reducer, middleware, enhancer, thunk
+  } = connectRoutes(routesMap, {
     ...options,
     initialEntries
   })
@@ -29,7 +33,6 @@ export default (preLoadedState, initialEntries) => {
   return { store, thunk }
 }
 
-const composeEnhancers = (...args) =>
-  typeof window !== 'undefined'
-    ? composeWithDevTools({ actionCreators })(...args)
-    : compose(...args)
+const composeEnhancers = (...args) => typeof window !== 'undefined'
+  ? composeWithDevTools({ actionCreators })(...args)
+  : compose(...args)

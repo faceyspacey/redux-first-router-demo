@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { TransitionGroup, Transition } from 'transition-group'
-import UniversalComponent from '../UniversalComponent'
+import UniversalComponent from './UniversalComponent'
 
 import isLoading from '../selectors/isLoading'
 import styles from '../css/Switcher'
 
-const Switcher = ({ page, direction, isLoading }) =>
+const Switcher = ({ page, direction, isLoading }) => (
   <TransitionGroup
     className={`${styles.switcher} ${direction}`}
     duration={500}
@@ -16,6 +16,7 @@ const Switcher = ({ page, direction, isLoading }) =>
       <UniversalComponent page={page} isLoading={isLoading} />
     </Transition>
   </TransitionGroup>
+)
 
 const mapState = ({ page, direction, ...state }) => ({
   page,

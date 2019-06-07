@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../css/Home'
 
-const Home = () =>
+const Home = () => (
   <div className={styles.home}>
     <h1>HOME</h1>
 
@@ -98,5 +98,6 @@ onClick: () => dispatch({
       Middleware
     </a>
   </div>
+)
 
 export default Home
