@@ -2,9 +2,11 @@ import routesMap from './routesMap'
 // import jwt from 'jsonwebtoken'
 
 export const isServer = typeof window === 'undefined'
+const ssrRest = process.env.NODE_ENV === 'production' ? 'https://demo-auction.afanasiev.xyz' : 'http://localhost:8080';
+const apiRest = isServer ? 'http://localhost:3000' : ssrRest;
 
 export const fetchData = async (path, jwToken) =>
-  fetch(`http://localhost:3000${path}`, {
+  fetch(`${apiRest}${path}`, {
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${jwToken || ''}`

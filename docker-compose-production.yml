@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+    gateway:
+        image: ${REGISTRY}/rfr-gateway:${IMAGE_TAG}
+        restart: always
+        volumes:
+            - /etc/letsencrypt:/etc/letsencrypt:ro
+            - /var/www/html:/var/www/html:ro
+        ports:
+            - "80:80"
+            - "443:443"
+        depends_on:
+            - myapp
+    myapp:
+        image: ${REGISTRY}/rfr-server:${IMAGE_TAG}
+        restart: always
+    registry:
+        image: registry:2
+        restart: always
+        volumes:
+            - registry:/var/lib/registry
+
+volumes:
+    registry:

@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+    gateway:
+        build:
+            context: gateway/docker
+            dockerfile: development/nginx/Dockerfile
+        ports:
+            - "8080:8080"
+        depends_on:
+            - myapp
+    myapp:
+        build:
+            context: server/docker
+            dockerfile: development/nginx/Dockerfile
+        volumes:
+            - ./:/app
