@@ -21,7 +21,7 @@ docker-build:
 build: build-gateway build-server
 
 build-gateway:
-	docker --log-level=debug build --pull --file=gateway/docker/production/nginx/Dockerfile --tag=${REGISTRY}/rfr-gateway:${IMAGE_TAG} gateway/docker
+	docker --log-level=debug build --pull --file=gateway/docker/production/nginx/Dockerfile --tag=${REGISTRY}/rfr-gateway:${IMAGE_TAG} .
 
 build-server:
 	docker --log-level=debug build --pull --file=server/docker/production/nginx/Dockerfile --tag=${REGISTRY}/rfr-server:${IMAGE_TAG} .
