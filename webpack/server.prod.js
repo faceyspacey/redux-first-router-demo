@@ -21,10 +21,13 @@ const externals = fs
     return externals
   }, {})
 
+externals['react-dom/server'] = 'commonjs react-dom/server';
+
 module.exports = {
   name: 'server',
   target: 'node',
   devtool: 'source-map',
+  mode: 'production',
   entry: ['fetch-everywhere', res('../server/render.js')],
   externals,
   output: {

@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
+const WriteFilePlugin = require('write-file-webpack-plugin')
 
 const res = p => path.resolve(__dirname, p)
 
@@ -21,11 +22,14 @@ const externals = fs
     return externals
   }, {})
 
+externals['react-dom/server'] = 'commonjs react-dom/server';
+ 
 module.exports = {
   name: 'server',
   target: 'node',
   // devtool: 'source-map',
   devtool: 'eval',
+  mode: 'development',
   entry: ['babel-polyfill', 'fetch-everywhere', res('../server/render.js')],
   externals,
   output: {
@@ -61,7 +65,7 @@ module.exports = {
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     }),
-
+    new WriteFilePlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development')

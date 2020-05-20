@@ -1,4 +1,4 @@
-import createHistory from 'history/createMemoryHistory'
+import {createMemoryHistory as createHistory} from 'history'
 import { NOT_FOUND } from 'redux-first-router'
 import configureStore from '../src/configureStore'
 

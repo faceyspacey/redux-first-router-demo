@@ -1,8 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import createHistory from 'history/createBrowserHistory'
-import AppContainer from 'react-hot-loader/lib/AppContainer'
+import {createBrowserHistory as createHistory} from 'history'
 import App from './components/App'
 import configureStore from './configureStore'
 
@@ -13,11 +12,9 @@ const render = App => {
   const root = document.getElementById('root')
 
   ReactDOM.hydrate(
-    <AppContainer>
       <Provider store={store}>
         <App />
-      </Provider>
-    </AppContainer>,
+      </Provider>,
     root
   )
 }

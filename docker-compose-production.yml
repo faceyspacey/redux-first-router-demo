@@ -11,6 +11,10 @@ services:
             - "443:443"
         depends_on:
             - myapp
+            - static
+    static:
+        image: ${REGISTRY}/rfr-static:${IMAGE_TAG}
+        restart: always
     myapp:
         image: ${REGISTRY}/rfr-server:${IMAGE_TAG}
         restart: always

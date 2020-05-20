@@ -18,21 +18,30 @@ docker-pull:
 docker-build:
 	docker-compose build
 
-build: build-gateway build-server
+build: build-prod build-gateway build-server build-static
 
 build-gateway:
 	docker --log-level=debug build --pull --file=gateway/docker/production/nginx/Dockerfile --tag=${REGISTRY}/rfr-gateway:${IMAGE_TAG} .
 
+build-static:
+	docker --log-level=debug build --pull --file=static/docker/production/nginx/Dockerfile --tag=${REGISTRY}/rfr-static:${IMAGE_TAG} .
+
 build-server:
 	docker --log-level=debug build --pull --file=server/docker/production/nginx/Dockerfile --tag=${REGISTRY}/rfr-server:${IMAGE_TAG} .
+
+build-prod:
+	npm run build
 
 try-build:
 	REGISTRY=localhost IMAGE_TAG=0 make build
 
-push: push-gateway push-server
+push: push-gateway push-server push-static
 
 push-gateway:
 	docker push ${REGISTRY}/rfr-gateway:${IMAGE_TAG}
+
+push-static:
+	docker push ${REGISTRY}/rfr-static:${IMAGE_TAG}
 
 push-server:
 	docker push ${REGISTRY}/rfr-server:${IMAGE_TAG}

@@ -1,6 +1,6 @@
 node_modules
 *.log
-buildClient
-buildServer
+/buildClient
+/buildServer
 /htpasswd
-*-lock.json
+/*-lock.json

@@ -1,7 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const WriteFilePlugin = require('write-file-webpack-plugin')
-const AutoDllPlugin = require('autodll-webpack-plugin')
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 
 module.exports = {
@@ -9,6 +8,7 @@ module.exports = {
   target: 'web',
   // devtool: 'source-map',
   devtool: 'eval',
+  mode: 'development',
   entry: [
     'babel-polyfill',
     'fetch-everywhere',
@@ -31,54 +31,51 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractCssChunks.extract({
-          use: {
+        use: [
+          {
+            loader: ExtractCssChunks.loader,
+            options: {
+              hot: true,
+              reloadAll: true
+            }
+          },
+          {
             loader: 'css-loader',
             options: {
               modules: true,
               localIdentName: '[name]__[local]--[hash:base64:5]'
             }
           }
-        })
+        ]
       }
     ]
   },
   resolve: {
     extensions: ['.js', '.css']
   },
+  optimization: {
+    runtimeChunk: {
+      name: 'bootstrap'
+    },
+    splitChunks: {
+      chunks: 'initial',
+      cacheGroups: {
+        vendors: {
+          test:/[\\/]node_modules[\\/](react|react-dom|react-redux|redux|history|transition-group|redux-first-router|redux-first-router-link|fetch-everywhere|babel-polyfill)[\\/]/,
+          name: 'vendor'
+        }
+      }
+    }
+  },
   plugins: [
     new WriteFilePlugin(), // used so you can see what chunks are produced in dev
     new ExtractCssChunks(),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
-      filename: '[name].js',
-      minChunks: Infinity
-    }),
-
+    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development')
-      }
-    }),
-    new AutoDllPlugin({
-      context: path.join(__dirname, '..'),
-      filename: '[name].js',
-      entry: {
-        vendor: [
-          'react',
-          'react-dom',
-          'react-redux',
-          'redux',
-          'history/createBrowserHistory',
-          'transition-group',
-          'redux-first-router',
-          'redux-first-router-link',
-          'fetch-everywhere',
-          'babel-polyfill',
-          'redux-devtools-extension/logOnlyInProduction'
-        ]
       }
     })
   ]

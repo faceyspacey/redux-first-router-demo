@@ -5,12 +5,14 @@ services:
             context: gateway/docker
             dockerfile: development/nginx/Dockerfile
         ports:
-            - "8080:8080"
+            - "3000:80"
         depends_on:
             - myapp
     myapp:
-        build:
-            context: server/docker
-            dockerfile: development/nginx/Dockerfile
+        image: node:alpine
+        working_dir: /app
+        expose:
+            - "3000"
         volumes:
             - ./:/app
+        command: npm start 

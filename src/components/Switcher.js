@@ -8,13 +8,19 @@ import Err from './Error'
 import isLoading from '../selectors/isLoading'
 import styles from '../css/Switcher'
 
-const UniversalComponent = universal(({ page }) => import(`./${page}`), {
+const load = props => Promise.all([
+  import( /* webpackChunkName: '[request]' */ `./${props.page}`)
+]).then(proms => proms[0])
+
+const UniversalComponent = universal(load, {
+  chunkName: props => props.page,
+  resolve: props => require.resolveWeak(`./${props.page}`),
   minDelay: 500,
   loading: Loading,
   error: Err
 })
 
-const Switcher = ({ page, direction, isLoading }) =>
+const Switcher = ({ page, direction, isLoading }) => (
   <TransitionGroup
     className={`${styles.switcher} ${direction}`}
     duration={500}
@@ -24,6 +30,7 @@ const Switcher = ({ page, direction, isLoading }) =>
       <UniversalComponent page={page} isLoading={isLoading} />
     </Transition>
   </TransitionGroup>
+);
 
 const mapState = ({ page, direction, ...state }) => ({
   page,

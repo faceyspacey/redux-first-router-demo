@@ -63,7 +63,6 @@ else {
   const clientStats = require('../buildClient/stats.json') // eslint-disable-line import/no-unresolved
   const serverRender = require('../buildServer/main.js').default // eslint-disable-line import/no-unresolved
 
-  app.use(publicPath, express.static(outputPath))
   app.use(serverRender({ clientStats, outputPath }))
 }
 
