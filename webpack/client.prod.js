@@ -9,7 +9,6 @@ module.exports = {
   devtool: 'source-map',
   mode: 'production',
   entry: [
-    'babel-polyfill',
     'fetch-everywhere',
     path.resolve(__dirname, '../src/index.js')
   ],

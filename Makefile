@@ -18,7 +18,7 @@ docker-pull:
 docker-build:
 	docker-compose build
 
-build: build-prod build-gateway build-server build-static
+build: build-gateway build-server build-static
 
 build-gateway:
 	docker --log-level=debug build --pull --file=gateway/docker/production/nginx/Dockerfile --tag=${REGISTRY}/rfr-gateway:${IMAGE_TAG} .
