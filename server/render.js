@@ -6,8 +6,8 @@ import flushChunks from 'webpack-flush-chunks'
 import configureStore from './configureStore'
 import App from '../src/components/App'
 
-export default ({ clientStats }) => async (req, res, next) => {
-  const store = await configureStore(req, res)
+export default ({ clientStats }) => async (ctx, next) => {
+  const store = await configureStore(ctx)
   if (!store) return // no store means redirect was already served
 
   const app = createApp(App, store)
@@ -16,17 +16,17 @@ export default ({ clientStats }) => async (req, res, next) => {
   const chunkNames = flushChunkNames()
   const { js, styles, cssHash } = flushChunks(clientStats, { chunkNames })
 
-  console.log('REQUESTED PATH:', req.path)
+  console.log('REQUESTED PATH:', ctx.path)
   console.log('CHUNK NAMES', chunkNames)
 
-  return res.send(
+  ctx.body = (
     `<!doctype html>
       <html>
         <head>
           <meta charset="utf-8">
           <title>redux-first-router-demo</title>
           ${styles}
-          <link rel="stylesheet prefetch" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+          <link rel="stylesheet prefetch" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         </head>
         <body>
           <script>window.REDUX_STATE = ${stateJson}</script>
@@ -36,6 +36,8 @@ export default ({ clientStats }) => async (req, res, next) => {
         </body>
       </html>`
   )
+
+  await next(); // если этого не сделать то обрывается связь через websocket
 }
 
 const createApp = (App, store) =>

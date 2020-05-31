@@ -1,4 +1,4 @@
-export const findVideos = async (category, jwToken) => {
+const findVideos = async (category, jwToken) => {
   await fakeDelay(1000)
   if (!jwToken) return [] // in a real app, you'd authenticate
 
@@ -14,7 +14,7 @@ export const findVideos = async (category, jwToken) => {
   }
 }
 
-export const findVideo = async (slug, jwToken) => {
+const findVideo = async (slug, jwToken) => {
   await fakeDelay(500)
   if (!jwToken) return null // TRY: set the cookie === ''
 
@@ -136,3 +136,8 @@ const dbGraphqlVideos = [
 ]
 
 const allVideos = reactReduxVideos.concat(dbGraphqlVideos, fpVideos)
+
+module.exports = {
+  findVideos,
+  findVideo
+}

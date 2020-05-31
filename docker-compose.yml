@@ -1,11 +1,21 @@
 version: '3.7'
 services:
     gateway:
-        build:
-            context: gateway/docker
-            dockerfile: development/nginx/Dockerfile
+        image: nginx:alpine
+        working_dir: /app
+        volumes:
+            - ./gateway/docker/development/nginx/conf.d:/etc/nginx/conf.d
         ports:
             - "3000:80"
+        depends_on:
+            - myapp
+    static:
+        image: nginx:alpine
+        working_dir: /app
+        volumes: 
+            - ./static/docker/development/nginx/conf.d:/etc/nginx/conf.d
+            - ./:/app
+        command: sh -c "mkdir -p dist && nginx -g 'daemon off;'"
         depends_on:
             - myapp
     myapp:
