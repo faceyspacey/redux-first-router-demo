@@ -1,0 +1,42 @@
+{
+    "env": {
+        "browser": true,
+        "es2020": true,
+        "node": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "standard"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "settings": {
+        "react": {
+            "version": "16"
+        }
+    },
+    "rules": {
+        "indent": [
+            "error",
+            2,
+            {
+              "ignoredNodes": [
+                "TemplateLiteral"
+              ]
+            }
+          ],
+          "template-curly-spacing": [
+            "off"
+          ],
+          "space-before-function-paren": "off",
+          "semi": "always"
+    }
+}

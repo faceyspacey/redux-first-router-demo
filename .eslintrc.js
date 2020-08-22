@@ -133,6 +133,18 @@ module.exports = {
         ]
       }
     ],
-    'linebreak-style': 0
+    'linebreak-style': 0,
+    "indent": [
+      "error",
+      2,
+      {
+        "ignoredNodes": [
+          "TemplateLiteral"
+        ]
+      }
+    ],
+    "template-curly-spacing": [
+      "off"
+    ]
   }
 }
