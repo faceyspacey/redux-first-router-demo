@@ -25,4 +25,9 @@ services:
             - "3000"
         volumes:
             - ./:/app
-        command: npm start 
+        command: npm start
+    node-cli:
+        image: node:alpine
+        working_dir: /app
+        volumes: 
+            - ./:/app

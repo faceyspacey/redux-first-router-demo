@@ -3,6 +3,12 @@ up: docker-up
 down: docker-down
 restart: down up
 
+lint: 
+	docker-compose run --rm node-cli npm run eslint
+
+lint-fix: 
+	docker-compose run --rm node-cli npm run eslint-fix
+
 docker-up:
 	docker-compose up -d
 
