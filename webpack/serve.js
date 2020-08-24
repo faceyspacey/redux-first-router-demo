@@ -1,7 +1,5 @@
 module.exports = function (serve) {
-    return {
-        plugins: [
-            serve.attach()
-        ],
-    };
+  return {
+    plugins: [serve.attach()],
+  };
 };

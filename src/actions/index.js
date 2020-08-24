@@ -1,30 +1,30 @@
-import { NOT_FOUND } from 'redux-first-router'
+import {NOT_FOUND} from 'redux-first-router';
 
 // try dispatching these from the redux devTools
 
 export const goToPage = (type, category) => ({
   type,
-  payload: category && { category }
-})
+  payload: category && {category},
+});
 
 export const goHome = () => ({
-  type: 'HOME'
-})
+  type: 'HOME',
+});
 
 export const goToAdmin = () => ({
-  type: 'ADMIN'
-})
+  type: 'ADMIN',
+});
 
 export const notFound = () => ({
-  type: NOT_FOUND
-})
+  type: NOT_FOUND,
+});
 
-export const visitCategory = category => ({
+export const visitCategory = (category) => ({
   type: 'LIST',
-  payload: { category }
-})
+  payload: {category},
+});
 
-export const visitVideo = slug => ({
+export const visitVideo = (slug) => ({
   type: 'VIDEO',
-  payload: { slug }
-})
+  payload: {slug},
+});

@@ -1,43 +1,36 @@
 {
-    "env": {
-        "browser": true,
-        "es2020": true,
-        "node": true
+  "env": {
+    "browser": true,
+    "es2020": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "standard",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "plugin:react/recommended",
-        "standard",
-        "plugin:prettier/recommended"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 11,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "prettier"
-    ],
-    "settings": {
-        "react": {
-            "version": "16"
-        }
-    },
-    "rules": {
-        "indent": [
-            "error",
-            2,
-            {
-              "ignoredNodes": [
-                "TemplateLiteral"
-              ]
-            }
-          ],
-          "template-curly-spacing": [
-            "off"
-          ],
-          "prettier/prettier": "error"
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier"],
+  "settings": {
+    "react": {
+      "version": "16"
     }
+  },
+  "rules": {
+    "indent": [
+      "error",
+      2,
+      {
+        "ignoredNodes": ["TemplateLiteral"]
+      }
+    ],
+    "template-curly-spacing": ["off"],
+    "prettier/prettier": "error"
+  }
 }

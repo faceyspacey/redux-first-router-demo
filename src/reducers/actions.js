@@ -1,10 +1,10 @@
 export default (state = [], action = {}) => {
   if (action.type === '@@redux/INIT' || action.type === '@@INIT') {
-    return state
+    return state;
   }
 
-  return [action, ...state]
-}
+  return [action, ...state];
+};
 
 // NOTE: this isn't a reducer you are likely to have in your app, since it's
 // for "devTools." Don't worry that it does some weird things. The reason is:

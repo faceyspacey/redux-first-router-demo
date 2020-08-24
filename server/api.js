@@ -1,27 +1,27 @@
 const findVideos = async (category, jwToken) => {
-  await fakeDelay(1000)
-  if (!jwToken) return [] // in a real app, you'd authenticate
+  await fakeDelay(1000);
+  if (!jwToken) return []; // in a real app, you'd authenticate
 
   switch (category) {
     case 'fp':
-      return fpVideos
+      return fpVideos;
     case 'react-redux':
-      return reactReduxVideos
+      return reactReduxVideos;
     case 'db-graphql':
-      return dbGraphqlVideos
+      return dbGraphqlVideos;
     default:
-      return []
+      return [];
   }
-}
+};
 
 const findVideo = async (slug, jwToken) => {
-  await fakeDelay(500)
-  if (!jwToken) return null // TRY: set the cookie === ''
+  await fakeDelay(500);
+  if (!jwToken) return null; // TRY: set the cookie === ''
 
-  return allVideos.find(video => video.slug === slug)
-}
+  return allVideos.find((video) => video.slug === slug);
+};
 
-const fakeDelay = (ms = 1000) => new Promise(res => setTimeout(res, ms))
+const fakeDelay = (ms = 1000) => new Promise((res) => setTimeout(res, ms));
 
 const fpVideos = [
   {
@@ -34,7 +34,7 @@ const fpVideos = [
     tip: `Redux-First Router does not require you to embed actual links into the page 
             to get the benefit of a synced address bar. Regular actions if matched
             will change the URL. That makes it easy to apply to an existing SPA Redux
-            lacking in routing/URLs!`
+            lacking in routing/URLs!`,
   },
   {
     youtubeId: 'zBHB9i8e3Kc',
@@ -45,7 +45,7 @@ const fpVideos = [
     color: 'blue',
     tip: `Redux reducers programmatically allow you to produce any state you need.
           So logically Route Matching components such as in React Reacter only
-          allow you to do LESS, but with a MORE complicated API.`
+          allow you to do LESS, but with a MORE complicated API.`,
   },
   {
     youtubeId: 'mty0RwkPmE8',
@@ -57,9 +57,9 @@ const fpVideos = [
     tip: `In your actions.meta.location key passed to your reducers you have all sorts
           of information: the previous route, its type and payload, history, whether
           the browser back/next buttons were used and if the action was dispatched on load.
-          Check the "kind" key.`
-  }
-]
+          Check the "kind" key.`,
+  },
+];
 
 const reactReduxVideos = [
   {
@@ -71,7 +71,7 @@ const reactReduxVideos = [
     color: 'red',
     tip: `Redux-First Router tries in all cases to mirror the Redux API. There is no need
           to pass your thunk :params such as in an express request or the like. Just grab it
-          from the payload stored in the location state.`
+          from the payload stored in the location state.`,
   },
   {
     youtubeId: 'zD_judE-bXk',
@@ -83,7 +83,7 @@ const reactReduxVideos = [
     tip: `Redux-First Router requires your payload to be objects, as its keys are directionally extracted
           and from your URLs and passed from payloads to URL path segments. Your free
           to use whatever payload you like for redux actions not connected to your routes. Not all
-          actions need to be connected to routes.`
+          actions need to be connected to routes.`,
   },
   {
     youtubeId: 'uvAXVMwHJXU',
@@ -94,9 +94,9 @@ const reactReduxVideos = [
     color: 'red',
     tip: `The <Link /> component embeds paths in hrefs for SEO, but you don't need to use it
           to get the benefits of a changing address bar. Actions that match routes will
-          trigger the corresponding URL even if you dispatch them directly.`
-  }
-]
+          trigger the corresponding URL even if you dispatch them directly.`,
+  },
+];
 
 const dbGraphqlVideos = [
   {
@@ -108,7 +108,7 @@ const dbGraphqlVideos = [
     color: 'orange',
     tip: `The 'thunk' feature is optional, but very useful. Using our 'thunk' feature allows you
           to define it in one place while linking to the route from many places without
-          worrying about getting the data first. It's also very easy to handle server-side.`
+          worrying about getting the data first. It's also very easy to handle server-side.`,
   },
   {
     youtubeId: '_5VShOmnfQ0',
@@ -120,7 +120,7 @@ const dbGraphqlVideos = [
     tip: `Structure your reducers so that less actions are used to trigger the same state. 
           Your actions will become more 'page-like'. As a result your reducers
           will need to do more "tear down" work when leaving corresponding pages. It's also
-          recommended to set action types as the capitalized noun name of the page.`
+          recommended to set action types as the capitalized noun name of the page.`,
   },
   {
     youtubeId: 'm-hre1tt9C4',
@@ -131,13 +131,13 @@ const dbGraphqlVideos = [
     color: 'orange',
     tip: `Using a hash of slugs within one of your reducers is the recommended approach to 
           maintain a normalized set of entities to get the benefits of SEO. This is as opposed
-          to using IDs. Refrain from using normalizr or Apollo until your app justifies it.`
-  }
-]
+          to using IDs. Refrain from using normalizr or Apollo until your app justifies it.`,
+  },
+];
 
-const allVideos = reactReduxVideos.concat(dbGraphqlVideos, fpVideos)
+const allVideos = reactReduxVideos.concat(dbGraphqlVideos, fpVideos);
 
 module.exports = {
   findVideos,
-  findVideo
-}
+  findVideo,
+};

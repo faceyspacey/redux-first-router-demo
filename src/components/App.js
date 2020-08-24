@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import DevTools from './DevTools'
-import Sidebar from './Sidebar'
-import Switcher from './Switcher'
+import DevTools from './DevTools';
+import Sidebar from './Sidebar';
+import Switcher from './Switcher';
 
-import styles from '../css/App'
+import styles from '../css/App';
 
 const App = () => (
   <div>
@@ -17,4 +17,4 @@ const App = () => (
   </div>
 );
 
-export default App
+export default App;

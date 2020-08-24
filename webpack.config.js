@@ -9,30 +9,29 @@ const babelLoader = require('./webpack/babel');
 const servePlugin = require('./webpack/serve');
 const cssLoader = require('./webpack/cssLoader');
 const miniCssPlugin = require('./webpack/minicss');
-const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
+const {WebpackPluginServe: Serve} = require('webpack-plugin-serve');
 
-const res = p => path.resolve(__dirname, p);
+const res = (p) => path.resolve(__dirname, p);
 const DIST_DIR = path.resolve(__dirname, 'dist');
 const optimize = process.env.NODE_ENV === 'production';
-const mode = optimize ? 'production' : 'development'
+const mode = optimize ? 'production' : 'development';
 
 // конфиг общий для всех
-const common = merge({
-  mode,
-  watch: !optimize,
-  entry: [
-    'fetch-everywhere',
-  ],
-  output: {
-    path: DIST_DIR,
-    publicPath: '/static/',
+const common = merge(
+  {
+    mode,
+    watch: !optimize,
+    entry: ['fetch-everywhere'],
+    output: {
+      path: DIST_DIR,
+      publicPath: '/static/',
+    },
+    resolve: {
+      extensions: ['.js', '.css'],
+    },
   },
-  resolve: {
-    extensions: ['.js', '.css']
-  },
-},
   define(mode),
-  babelLoader(),
+  babelLoader()
 );
 
 // основной мульти-конфиг, но не полноценный
@@ -45,31 +44,28 @@ const baseConfig = {
     {
       name: 'client',
       target: 'web',
-      entry: [
-        res('./src/index.js'),
-      ],
+      entry: [res('./src/index.js')],
       output: {
         filename: '[name].js',
         chunkFilename: '[name].js',
       },
       optimization: {
         runtimeChunk: {
-          name: 'bootstrap'
+          name: 'bootstrap',
         },
         splitChunks: {
           chunks: 'initial',
           cacheGroups: {
             vendors: {
               test: /[\\/]node_modules[\\/](react|react-dom|react-redux|redux|history|transition-group|redux-first-router|redux-first-router-link|fetch-everywhere|babel-polyfill)[\\/]/,
-              name: 'vendor'
-            }
-          }
-        }
+              name: 'vendor',
+            },
+          },
+        },
       },
-      plugins: [
-        new StatsPlugin('stats.json'),
-      ]
-    }),
+      plugins: [new StatsPlugin('stats.json')],
+    }
+  ),
   server: merge.smart(
     common,
     externals(res('./node_modules')),
@@ -77,20 +73,19 @@ const baseConfig = {
     {
       name: 'server',
       target: 'node',
-      entry: [
-        res('./server/render.js')
-      ],
+      entry: [res('./server/render.js')],
       output: {
         filename: 'serverRender.js',
         libraryTarget: 'commonjs2',
       },
       plugins: [
         new webpack.optimize.LimitChunkCountPlugin({
-          maxChunks: 1
+          maxChunks: 1,
         }),
       ],
-    })
-}
+    }
+  ),
+};
 
 // мульти-конфиг для разработки
 function getDevelopmentConfig() {
@@ -105,17 +100,21 @@ function getDevelopmentConfig() {
   });
 
   return {
-    client: merge({
-      entry: [
-        'webpack-plugin-serve/client'
-      ],
-      devtool: 'source-map',
-    }, servePlugin(serve)),
-    server: merge({
-      devtool: 'source-map',
-    }, servePlugin(serve)),
-  }
-};
+    client: merge(
+      {
+        entry: ['webpack-plugin-serve/client'],
+        devtool: 'source-map',
+      },
+      servePlugin(serve)
+    ),
+    server: merge(
+      {
+        devtool: 'source-map',
+      },
+      servePlugin(serve)
+    ),
+  };
+}
 
 // мульти-конфиг для релиза
 const productionConfig = {
@@ -125,7 +124,7 @@ const productionConfig = {
       filename: '[name].[chunkhash].js',
       chunkFilename: '[name].[chunkhash].js',
       path: res('./buildClient'),
-    }
+    },
   },
   server: {
     devtool: false,
@@ -133,10 +132,11 @@ const productionConfig = {
       filename: 'serverRender.js',
       path: res('./buildServer'),
     },
-    plugins: [
-      new webpack.HashedModuleIdsPlugin(),
-    ]
+    plugins: [new webpack.HashedModuleIdsPlugin()],
   },
 };
 
-module.exports = merge.multiple(baseConfig, optimize ? productionConfig : getDevelopmentConfig());
+module.exports = merge.multiple(
+  baseConfig,
+  optimize ? productionConfig : getDevelopmentConfig()
+);

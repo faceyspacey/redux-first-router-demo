@@ -1,30 +1,31 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { TransitionGroup, Transition } from 'transition-group'
-import universal from 'react-universal-component'
+import React from 'react';
+import {connect} from 'react-redux';
+import {TransitionGroup, Transition} from 'transition-group';
+import universal from 'react-universal-component';
 
-import Loading from './Loading'
-import Err from './Error'
-import isLoading from '../selectors/isLoading'
-import styles from '../css/Switcher'
+import Loading from './Loading';
+import Err from './Error';
+import isLoading from '../selectors/isLoading';
+import styles from '../css/Switcher';
 
-const load = props => Promise.all([
-  import( /* webpackChunkName: '[request]' */ `./${props.page}`)
-]).then(proms => proms[0])
+const load = (props) =>
+  Promise.all([
+    import(/* webpackChunkName: '[request]' */ `./${props.page}`),
+  ]).then((proms) => proms[0]);
 
 const UniversalComponent = universal(load, {
-  chunkName: props => props.page,
-  resolve: props => require.resolveWeak(`./${props.page}`),
+  chunkName: (props) => props.page,
+  resolve: (props) => require.resolveWeak(`./${props.page}`),
   minDelay: 500,
   loading: Loading,
-  error: Err
-})
+  error: Err,
+});
 
-const Switcher = ({ page, direction, isLoading }) => (
+const Switcher = ({page, direction, isLoading}) => (
   <TransitionGroup
     className={`${styles.switcher} ${direction}`}
     duration={500}
-    prefix='fade'
+    prefix="fade"
   >
     <Transition key={page}>
       <UniversalComponent page={page} isLoading={isLoading} />
@@ -32,10 +33,10 @@ const Switcher = ({ page, direction, isLoading }) => (
   </TransitionGroup>
 );
 
-const mapState = ({ page, direction, ...state }) => ({
+const mapState = ({page, direction, ...state}) => ({
   page,
   direction,
-  isLoading: isLoading(state)
-})
+  isLoading: isLoading(state),
+});
 
-export default connect(mapState)(Switcher)
+export default connect(mapState)(Switcher);

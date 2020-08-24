@@ -1,21 +1,21 @@
 export default (state = 'RFR Demo', action = {}) => {
   switch (action.type) {
     case 'HOME':
-      return 'RFR Demo'
+      return 'RFR Demo';
     case 'LIST':
-      return `RFR: ${capitalize(action.payload.category)}`
+      return `RFR: ${capitalize(action.payload.category)}`;
     case 'VIDEO':
-      return `RFR: ${capitalize(action.payload.slug)}`
+      return `RFR: ${capitalize(action.payload.slug)}`;
     case 'LOGIN':
-      return 'RFR Login'
+      return 'RFR Login';
     case 'ADMIN':
-      return 'RFR Admin'
+      return 'RFR Admin';
     default:
-      return state
+      return state;
   }
-}
+};
 
-const capitalize = str =>
-  str.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+const capitalize = (str) =>
+  str.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
 
 // RFR automatically changes the document.title for you :)

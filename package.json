@@ -18,7 +18,7 @@
     "lint": "eslint --fix src server webpack",
     "eslint": "eslint --ext .js,.jsx src",
     "eslint-fix": "eslint --fix --ext .js,.jsx src",
-    "prettier": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
+    "prettier": "prettier --write \"**/*.+(js|jsx|json)\"",
     "format": "prettier --single-quote --semi=false --write '{src,server,webpack}/**/*.js' && npm run lint"
   },
   "dependencies": {
