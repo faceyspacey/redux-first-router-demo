@@ -20,6 +20,7 @@
     "eslint-fix": "eslint --fix --ext .js,.jsx .",
     "prettier": "prettier --write \"**/*.+(js|jsx|json|css)\"",
     "stylelint": "stylelint \"src/**/*.css\"",
+    "stylelint-fix": "stylelint --fix \"src/**/*.css\"",
     "format": "prettier --single-quote --semi=false --write '{src,server,webpack}/**/*.js' && npm run lint"
   },
   "dependencies": {

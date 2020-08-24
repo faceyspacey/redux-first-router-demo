@@ -74,7 +74,7 @@
 }
 .videoTitle {
   color: #c8c8c8;
-  font-family: Montserrat;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 22px;
   text-shadow: 1px 1px 1px #000;
 }
@@ -108,7 +108,7 @@
 }
 .category span {
   color: #fff;
-  font-family: Montserrat;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 17px;
   text-shadow: 1px 1px 1px #000;
 }
@@ -126,7 +126,7 @@
 .tipTitle {
   font-size: 22px;
   font-weight: normal;
-  font-family: Montserrat;
+  font-family: 'Times New Roman', Times, serif;
   color: #fff;
   text-shadow: 1px 1px 1px rgba(4, 10, 40, 0.6);
   margin-bottom: 15px;
