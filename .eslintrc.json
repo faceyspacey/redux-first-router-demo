@@ -6,7 +6,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "standard"
+        "standard",
+        "plugin:prettier/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -16,7 +17,8 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "prettier"
     ],
     "settings": {
         "react": {
@@ -36,7 +38,6 @@
           "template-curly-spacing": [
             "off"
           ],
-          "space-before-function-paren": "off",
-          "semi": "always"
+          "prettier/prettier": "error"
     }
 }
