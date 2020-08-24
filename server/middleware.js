@@ -1,4 +1,4 @@
-const {findVideos} = require('./api');
+const {findVideos, findVideo} = require('./api');
 const path = require('path');
 const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');

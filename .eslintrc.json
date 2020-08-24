@@ -23,14 +23,7 @@
     }
   },
   "rules": {
-    "indent": [
-      "error",
-      2,
-      {
-        "ignoredNodes": ["TemplateLiteral"]
-      }
-    ],
-    "template-curly-spacing": ["off"],
+    "no-irregular-whitespace": "off",
     "prettier/prettier": "error"
   }
 }

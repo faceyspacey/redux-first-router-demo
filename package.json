@@ -17,7 +17,7 @@
     "cm": "git-cz",
     "lint": "eslint --fix src server webpack",
     "eslint": "eslint . --ext .js,.jsx",
-    "eslint-fix": "eslint . --fix --ext .js,.jsx",
+    "eslint-fix": "eslint --fix --ext .js,.jsx .",
     "prettier": "prettier --write \"**/*.+(js|jsx|json)\"",
     "format": "prettier --single-quote --semi=false --write '{src,server,webpack}/**/*.js' && npm run lint"
   },

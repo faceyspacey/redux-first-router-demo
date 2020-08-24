@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Link from 'redux-first-router-link';
 
@@ -22,6 +23,13 @@ const Player = ({playing, youtubeId, slug, color}) =>
       src={youtubeIframeSrc(youtubeId)}
     />
   );
+
+Player.propTypes = {
+  playing: PropTypes.any,
+  youtubeId: PropTypes.any,
+  slug: PropTypes.any,
+  color: PropTypes.any,
+};
 
 const youtubeBackground = (youtubeId) =>
   `url(https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg)`;

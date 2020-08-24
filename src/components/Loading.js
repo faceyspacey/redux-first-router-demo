@@ -1,8 +1,10 @@
 import React from 'react';
 import {spinner} from '../css/Switcher';
 
-export default () => (
+const Loading = () => (
   <div className={spinner}>
     <div />
   </div>
 );
+
+export default Loading;

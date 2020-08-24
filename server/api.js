@@ -21,7 +21,8 @@ const findVideo = async (slug, jwToken) => {
   return allVideos.find((video) => video.slug === slug);
 };
 
-const fakeDelay = (ms = 1000) => new Promise((res) => setTimeout(res, ms));
+const fakeDelay = (ms = 1000) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
 
 const fpVideos = [
   {

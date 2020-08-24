@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {TransitionGroup, Transition} from 'transition-group';
 import universal from 'react-universal-component';
@@ -32,6 +33,12 @@ const Switcher = ({page, direction, isLoading}) => (
     </Transition>
   </TransitionGroup>
 );
+
+Switcher.propTypes = {
+  page: PropTypes.any,
+  direction: PropTypes.any,
+  isLoading: PropTypes.bool,
+};
 
 const mapState = ({page, direction, ...state}) => ({
   page,

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import Player from './Player';
@@ -42,6 +43,16 @@ const Video = ({slug, title, youtubeId, category, by, color, tip}) => (
     </div>
   </div>
 );
+
+Video.propTypes = {
+  slug: PropTypes.any,
+  title: PropTypes.any,
+  youtubeId: PropTypes.any,
+  category: PropTypes.any,
+  by: PropTypes.any,
+  color: PropTypes.any,
+  tip: PropTypes.any,
+};
 
 const mapState = (state) => state.videosHash[state.slug] || {};
 

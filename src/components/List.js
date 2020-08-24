@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Link from 'redux-first-router-link';
 
@@ -11,6 +12,10 @@ const List = ({videos}) => (
     ))}
   </div>
 );
+
+List.propTypes = {
+  videos: PropTypes.any,
+};
 
 const Row = ({slug, title, youtubeId, by, color}) => (
   <Link
@@ -27,6 +32,14 @@ const Row = ({slug, title, youtubeId, by, color}) => (
     <span className={styles.by}>by: {by}</span>
   </Link>
 );
+
+Row.propTypes = {
+  slug: PropTypes.any,
+  title: PropTypes.any,
+  youtubeId: PropTypes.any,
+  by: PropTypes.any,
+  color: PropTypes.any,
+};
 
 const youtubeBackground = (youtubeId) =>
   `url(https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg)`;
