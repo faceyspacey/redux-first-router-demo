@@ -1,10 +1,14 @@
-init: docker-down-clear docker-pull docker-build docker-up
+init: docker-down-clear build-clear docker-pull docker-build docker-up
 up: docker-up
 down: docker-down
 restart: down up
 
+build-clear:
+	docker run --rm -v ${PWD}:/app -w /app alpine sh -c 'rm -rf dist buildClient buildServer'
+
 lint: 
 	docker-compose run --rm node-cli npm run eslint
+	docker-compose run --rm node-cli npm run stylelint
 
 lint-fix: 
 	docker-compose run --rm node-cli npm run eslint-fix
