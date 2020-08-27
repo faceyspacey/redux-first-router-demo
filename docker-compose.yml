@@ -15,7 +15,7 @@ services:
         volumes: 
             - ./static/docker/development/nginx/conf.d:/etc/nginx/conf.d
             - ./:/app
-        command: sh -c "mkdir -p dist && nginx -g 'daemon off;'"
+        command: nginx -g 'daemon off;'
         depends_on:
             - myapp
     myapp:
@@ -25,7 +25,7 @@ services:
             - "3000"
         volumes:
             - ./:/app
-        command: npm start
+        command: sh -c "until [ -f .ready ] ; do sleep 1 ; done && npm start"
     node-cli:
         image: node:alpine
         working_dir: /app

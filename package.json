@@ -6,7 +6,7 @@
   "author": "James Gillmore <james@faceyspacey.com>",
   "license": "MIT",
   "scripts": {
-    "start": "rimraf dist && cross-env NODE_ENV=development wp --config ./webpack.config",
+    "start": "cross-env NODE_ENV=development wp --config ./webpack.config",
     "start:prod": "npm run build && npm run serve",
     "serve": "cross-env NODE_ENV=production node buildServer/index.js",
     "build": "npm run build:all && npm run build:node",

@@ -1,7 +1,20 @@
-init: docker-down-clear build-clear docker-pull docker-build docker-up
+init: docker-down-clear \
+	ready-clear build-clear \
+	docker-pull docker-build docker-up \
+	node-init
 up: docker-up
 down: docker-down
 restart: down up
+
+node-init: npm-install npm-ready
+ready-clear:
+	docker run --rm -v ${PWD}:/app -w /app alpine sh -c 'rm -rf .npm-ready'
+
+npm-ready:
+	docker run --rm -v ${PWD}:/app -w /app alpine touch .npm-ready
+
+npm-install:
+	docker-compose run --rm node-cli npm install
 
 build-clear:
 	docker run --rm -v ${PWD}:/app -w /app alpine sh -c 'rm -rf dist buildClient buildServer'
