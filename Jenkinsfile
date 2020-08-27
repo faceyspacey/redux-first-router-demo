@@ -7,20 +7,20 @@ pipeline {
         CI = 'true'
     }
     stages {
-        stage ("One") {
+        stage ("Init") {
             steps {
-                sh "sleep 1"
+                sh "make init"
             }
         }
-        stage ("Two") {
+        stage ("Down") {
             steps {
-                sh "sleep 5"
+                sh "make docker-down-clear"
             }
         }
-        stage ("Three") {
-            steps {
-                sh "sleep 1"
-            }
+    }
+    post {
+        always {
+            sh 'make docker-down-clear || true'
         }
     }
 }
