@@ -12,6 +12,11 @@ pipeline {
                 sh "make init"
             }
         }
+        stage ("Lint") {
+            steps {
+                sh "make lint"
+            }
+        }
         stage ("Down") {
             steps {
                 sh "make docker-down-clear"
