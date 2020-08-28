@@ -10,7 +10,7 @@
     "start:prod": "npm run build && npm run serve",
     "serve": "cross-env NODE_ENV=production node buildServer/index.js",
     "build": "npm run build:all && npm run build:node",
-    "build:all": "rimraf buildClient && rimraf buildServer && cross-env NODE_ENV=production webpack --progress -p --config ./webpack.config",
+    "build:all": "cross-env NODE_ENV=production webpack --progress -p --config ./webpack.config",
     "build:node": "cross-env NODE_ENV=production babel server -d buildServer --ignore configureStore,render",
     "clean": "rimraf buildClient buildServer",
     "precommit": "lint-staged",

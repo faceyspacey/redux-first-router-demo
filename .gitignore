@@ -6,3 +6,4 @@ node_modules
 /htpasswd
 /*-lock.json
 .npm-ready
+.build-ready
