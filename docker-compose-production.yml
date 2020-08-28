@@ -18,11 +18,3 @@ services:
     myapp:
         image: ${REGISTRY}/rfr-server:${IMAGE_TAG}
         restart: always
-    registry:
-        image: registry:2
-        restart: always
-        volumes:
-            - registry:/var/lib/registry
-
-volumes:
-    registry:
