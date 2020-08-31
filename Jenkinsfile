@@ -46,6 +46,21 @@ pipeline {
                 sh "make push"
             }
         }
+        stage("Prod") {
+            when {
+                branch "master"
+            }
+            steps {
+                withCredentials([
+                    string(credentialsId: 'PRODUCTION_HOST', variable: 'HOST'),
+                    string(credentialsId: 'PRODUCTION_PORT', variable: 'PORT')
+                ]) {
+                    sshagent(credentials: ['PRODUCTION_AUTH']) {
+                        sh "BUILD_NUMBER=${env.BUILD_NUMBER} make deploy"
+                    }
+                }
+            }
+        }
     }
     post {
         always {
