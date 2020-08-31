@@ -3,7 +3,7 @@ import styles from '../css/Home';
 
 const Home = () => (
   <div className={styles.home}>
-    <h1>HOME</h1>
+    <h1>HOME автоматический деплой состоялся 31 августа 2020 года!</h1>
 
     <h2>NOTE: The top set of links are real links made like this:</h2>
 
