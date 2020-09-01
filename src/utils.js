@@ -4,7 +4,7 @@ import routesMap from './routesMap';
 export const isServer = typeof window === 'undefined';
 const ssrRest =
   process.env.NODE_ENV === 'production'
-    ? 'https://demo-auction.afanasiev.xyz'
+    ? 'https://rfr.afanasiev.xyz'
     : 'http://localhost:3000';
 const apiRest = isServer ? 'http://localhost:3000' : ssrRest;
 
