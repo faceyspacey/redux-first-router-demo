@@ -25,7 +25,7 @@ services:
             - "3000"
         volumes:
             - ./:/app
-        command: sh -c "until [ -f .ready ] ; do sleep 1 ; done && npm start"
+        command: sh -c "until [ -f .npm-ready ] ; do sleep 1 ; done && npm start"
     node-cli:
         image: node:alpine
         working_dir: /app
