@@ -9,6 +9,14 @@ const DIST_DIR = path.resolve(__dirname, '../dist');
 function middleware(app) {
   app.use(bodyParser());
 
+  router.get('/health', async (ctx, next) => {
+    const jwToken = 'fake';
+    const data = await findVideos(ctx.params.category, jwToken);
+    ctx.body = 'alive';
+
+    await next();
+  });
+
   router.get('/api/videos/:category', async (ctx, next) => {
     const jwToken = 'fake';
     const data = await findVideos(ctx.params.category, jwToken);
