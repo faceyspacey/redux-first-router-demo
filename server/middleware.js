@@ -10,8 +10,6 @@ function middleware(app) {
   app.use(bodyParser());
 
   router.get('/health', async (ctx, next) => {
-    const jwToken = 'fake';
-    const data = await findVideos(ctx.params.category, jwToken);
     ctx.body = 'alive';
 
     await next();
