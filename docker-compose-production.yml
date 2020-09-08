@@ -2,19 +2,33 @@ version: '3.7'
 services:
     gateway:
         image: ${REGISTRY}/rfr-gateway:${IMAGE_TAG}
-        restart: always
         volumes:
             - /etc/letsencrypt:/etc/letsencrypt:ro
             - /var/www/html:/var/www/html:ro
         ports:
             - "80:80"
             - "443:443"
-        depends_on:
-            - myapp
-            - static
+        deploy:
+            mode: replicated
+            replicas: 2
+            update_config:
+                parallelism: 1
+                delay: 10s
+            placement:
+                constraints: [node.role == manager]
     static:
         image: ${REGISTRY}/rfr-static:${IMAGE_TAG}
-        restart: always
+        deploy:
+            mode: replicated
+            replicas: 2
+            update_config:
+                parallelism: 1
+                delay: 10s
     myapp:
         image: ${REGISTRY}/rfr-server:${IMAGE_TAG}
-        restart: always
+        deploy:
+            mode: replicated
+            replicas: 2
+            update_config:
+                parallelism: 1
+                delay: 10s
