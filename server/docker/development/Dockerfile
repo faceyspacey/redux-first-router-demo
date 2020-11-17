@@ -1,6 +1,8 @@
 FROM node:alpine
 
-RUN apk add --no-cache curl
+RUN apk add --no-cache curl bash coreutils
+COPY ./wait-for-it.sh /usr/local/bin/wait-for-it
+RUN chmod +x /usr/local/bin/wait-for-it
 
 WORKDIR /app
 

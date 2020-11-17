@@ -5,15 +5,37 @@ const bodyParser = require('koa-bodyparser');
 const router = new Router();
 const importFresh = require('import-fresh');
 const DIST_DIR = path.resolve(__dirname, '../dist');
+const {login, health, register} = require('./controllers');
+const handleMongooseValidationError = require('./libs/validationErrors');
 
 function middleware(app) {
+
+  // const db = mongoose.connection;
+  // db.on('error', console.error.bind(console, 'connection error:'));
+  // db.once('open', function () {
+    // console.log("we're connected!");
+  // });
+
   app.use(bodyParser());
 
-  router.get('/health', async (ctx, next) => {
-    ctx.body = 'alive';
-
-    await next();
+  app.use(async (ctx, next) => {
+    try {
+      await next();
+    } catch (err) {
+      if (err.status) {
+        ctx.status = err.status;
+        ctx.body = {error: err.message};
+      } else {
+        console.error(err);
+        ctx.status = 500;
+        ctx.body = {error: 'Internal server error'};
+      }
+    }
   });
+
+  router.post('/login', login);
+  router.post('/register', handleMongooseValidationError, register);
+  router.get('/health', health);
 
   router.get('/api/videos/:category', async (ctx, next) => {
     const jwToken = 'fake';

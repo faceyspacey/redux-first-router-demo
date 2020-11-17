@@ -10,11 +10,18 @@ const servePlugin = require('./webpack/serve');
 const cssLoader = require('./webpack/cssLoader');
 const miniCssPlugin = require('./webpack/minicss');
 const {WebpackPluginServe: Serve} = require('webpack-plugin-serve');
+const WebpackShellPluginNext = require('webpack-shell-plugin-next');
+
+const modes = {
+  DEVELOPMENT: 'development',
+  PRODUCTION: 'production',
+  SERVER_DEVELOPMENT: 'server-development',
+};
 
 const res = (p) => path.resolve(__dirname, p);
 const DIST_DIR = path.resolve(__dirname, 'dist');
-const optimize = process.env.NODE_ENV === 'production';
-const mode = optimize ? 'production' : 'development';
+const optimize = process.env.NODE_ENV === modes.PRODUCTION;
+const mode = optimize ? modes.PRODUCTION : modes.DEVELOPMENT;
 
 // конфиг общий для всех
 const common = merge(
@@ -29,6 +36,7 @@ const common = merge(
     resolve: {
       extensions: ['.js', '.css'],
     },
+    devtool: 'source-map',
   },
   define(mode),
   babelLoader()
@@ -87,6 +95,28 @@ const baseConfig = {
   ),
 };
 
+const serverDevelopment = {
+  client: {},
+  server: {
+    plugins: [
+      new WebpackShellPluginNext({
+        onDoneWatch: {
+          scripts: ['echo "Webpack onDoneWatch"'],
+          blocking: false,
+          parallel: true,
+        },
+        onBuildEnd: {
+          scripts: [
+            'echo "onBuildEnd"',
+          ],
+          blocking: false,
+          parallel: true,
+        },
+      }),
+    ],
+  },
+};
+
 // мульти-конфиг для разработки
 function getDevelopmentConfig() {
   const serve = new Serve({
@@ -136,7 +166,28 @@ const productionConfig = {
   },
 };
 
+/**
+ * Выбор конфига в зависимости от NODE_ENV
+ */
+function getModeConfig() {
+  let config;
+  switch (process.env.NODE_ENV) {
+    case modes.PRODUCTION:
+      config = productionConfig;
+      break;
+    case modes.SERVER_DEVELOPMENT:
+      config = serverDevelopment;
+      break;
+    case modes.DEVELOPMENT:
+    default:
+      config = getDevelopmentConfig();
+      break;
+  }
+
+  return config;
+}
+
 module.exports = merge.multiple(
   baseConfig,
-  optimize ? productionConfig : getDevelopmentConfig()
+  getModeConfig(),
 );

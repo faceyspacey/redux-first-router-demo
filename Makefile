@@ -1,12 +1,16 @@
 init: docker-down-clear \
 	npm-ready-clear build-clear \
+	dist-create \
 	docker-pull docker-build docker-up \
 	node-init
 up: docker-up
 down: docker-down
 restart: down up
 
-node-init: npm-install npm-ready
+dist-create:
+	mkdir dist 
+
+node-init: npm-ready
 npm-ready-clear:
 	docker run --rm -v ${PWD}:/app -w /app alpine sh -c 'rm -rf .npm-ready'
 
