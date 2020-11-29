@@ -12,29 +12,20 @@ services:
             dockerfile: development/nginx/Dockerfile
         volumes:
             - ./dist:/app/dist
-    webpack-watch:
-        build:
-            context: webpack/docker
-            dockerfile: development/Dockerfile
-        ports: 
-            - "9228:9229"
-        volumes:
-            - ./:/app
-        command: sh -c "until [ -f .npm-ready ] ; do sleep 1 ; done && npm run start:server-development"
-    node-cli:
-        image: node:alpine
-        working_dir: /app
-        volumes: 
-            - ./:/app
     myapp:
         build:
             context: server/docker
             dockerfile: development/Dockerfile
         ports: 
             - "9229:9229"
-        volumes: 
+        volumes:
             - ./:/app
-        command: sh -c "until [ -f .npm-ready ] ; do sleep 1 ; done && wait-for-it mongodb:27017 -t 60 && node --inspect=0.0.0.0 server"  
+        command: sh -c "until [ -f .npm-ready ] ; do sleep 1 ; done && wait-for-it mongodb:27017 -t 60 && npm start"
+    node-cli:
+        image: node:alpine
+        working_dir: /app
+        volumes: 
+            - ./:/app  
     mongodb:
         image: mongo
         volumes: 

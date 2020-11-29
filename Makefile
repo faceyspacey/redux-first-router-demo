@@ -1,18 +1,33 @@
-init: docker-down-clear \
-	npm-ready-clear build-clear \
-	dist-create \
-	docker-pull docker-build docker-up \
-	node-init
+# docker-compose filename
+dc ?= docker-compose.yml
+
+# Запуск докера с удалением volumes
+init: docker-down-clear go
+
+# Запуск докера без удаления volumes
+v-init: docker-down go
+
+go: clear \
+	dist-mkdir \
+	docker-pull docker-build \
+	node-init \
+	docker-up
+	
 up: docker-up
 down: docker-down
 restart: down up
 
-dist-create:
-	mkdir dist 
+clear: npm-ready-clear build-clear
 
-node-init: npm-ready
+dist-mkdir:
+	mkdir -p dist 
+
+node-modules-mkdir:
+	mkdir -p node_modules
+
+node-init: node-modules-mkdir npm-install npm-ready
 npm-ready-clear:
-	docker run --rm -v ${PWD}:/app -w /app alpine sh -c 'rm -rf .npm-ready'
+	docker run --rm -v ${PWD}:/app -w /app alpine sh -c 'rm -rf .npm-ready node_modules'
 
 build-ready:
 	docker run --rm -v ${PWD}:/app -w /app alpine touch .build-ready
@@ -27,26 +42,26 @@ build-clear:
 	docker run --rm -v ${PWD}:/app -w /app alpine sh -c 'rm -rf .build-ready dist buildClient buildServer'
 
 lint: 
-	docker-compose run --rm node-cli npm run eslint
-	docker-compose run --rm node-cli npm run stylelint
+	docker-compose -f ${dc} run --rm node-cli npm run eslint
+	docker-compose -f ${dc} run --rm node-cli npm run stylelint
 
 lint-fix: 
-	docker-compose run --rm node-cli npm run eslint-fix
+	docker-compose -f ${dc} run --rm node-cli npm run eslint-fix
 
 docker-up:
-	docker-compose up -d
+	docker-compose -f ${dc} up -d
 
 docker-down:
-	docker-compose down --remove-orphans
+	docker-compose -f ${dc} down --remove-orphans
 
 docker-down-clear:
-	docker-compose down -v --remove-orphans
+	docker-compose -f ${dc} down -v --remove-orphans
 
 docker-pull:
-	docker-compose pull --include-deps
+	docker-compose -f ${dc} pull --include-deps
 
 docker-build:
-	docker-compose build
+	docker-compose -f ${dc} build
 
 build: build-clear build-prod build-ready build-gateway build-server build-static
 
@@ -60,7 +75,7 @@ build-server:
 	docker --log-level=debug build --pull --file=server/docker/production/Dockerfile --tag=${REGISTRY}/rfr-server:${IMAGE_TAG} .
 
 build-prod:
-	docker-compose run --rm node-cli npm run build
+	docker-compose -f ${dc} run --rm node-cli npm run build
 
 try-build:
 	REGISTRY=localhost IMAGE_TAG=0 make build
@@ -97,3 +112,6 @@ deploy-clean:
 
 rollback:
 	ssh -o StrictHostKeyChecking=no deploy@${HOST} -p ${PORT} 'cd site_${BUILD_NUMBER} && docker stack deploy --compose-file docker-compose.yml site --with-registry-auth --prune'
+
+logs:
+	docker-compose -f ${dc} logs -t -f ${ss}

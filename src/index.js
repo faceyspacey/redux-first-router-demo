@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {createBrowserHistory as createHistory} from 'history';
 import App from './components/App';
 import configureStore from './configureStore';
 
-const history = createHistory();
-const {store} = configureStore(history, window.REDUX_STATE);
+const {store} = configureStore(window.REDUX_STATE);
 
 const render = (App) => {
   const root = document.getElementById('root');

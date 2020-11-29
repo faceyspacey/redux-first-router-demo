@@ -1,4 +1,4 @@
-import {createMemoryHistory as createHistory} from 'history';
+// import {createMemoryHistory as createHistory} from 'history';
 // import { NOT_FOUND } from 'redux-first-router'
 import configureStore from '../src/configureStore';
 
@@ -6,8 +6,8 @@ export default async (ctx) => {
   const jwToken = 'fake'; // see server/index.js to change jwToken
   const preLoadedState = {jwToken}; // onBeforeChange will authenticate using this
 
-  const history = createHistory({initialEntries: [ctx.path]});
-  const {store, thunk} = configureStore(history, preLoadedState);
+  // const history = createHistory({initialEntries: [ctx.path]});
+  const {store, thunk} = configureStore(preLoadedState, [ctx.path]);
 
   // if not using onBeforeChange + jwTokens, you can also async authenticate
   // here against your db (i.e. using req.cookies.sessionId)
