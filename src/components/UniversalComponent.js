@@ -17,23 +17,23 @@ const UniversalComponent = universal(load, {
 });
 
 UniversalComponent.propTypes = {
-    loading: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.element,
-      PropTypes.bool
-    ]),
-    error: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.element,
-      PropTypes.bool
-    ]),
-    key: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-    timeout: PropTypes.number,
-    onError: PropTypes.func,
-    onLoad: PropTypes.func,
-    minDelay: PropTypes.number,
-    alwaysDelay: PropTypes.bool,
-    loadingTransition: PropTypes.bool
-  }
+  loading: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.element,
+    PropTypes.bool,
+  ]),
+  error: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.element,
+    PropTypes.bool,
+  ]),
+  key: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  timeout: PropTypes.number,
+  onError: PropTypes.func,
+  onLoad: PropTypes.func,
+  minDelay: PropTypes.number,
+  alwaysDelay: PropTypes.bool,
+  loadingTransition: PropTypes.bool,
+};
 
 export default UniversalComponent;

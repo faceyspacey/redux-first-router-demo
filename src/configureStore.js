@@ -8,10 +8,10 @@ import * as reducers from './reducers';
 import * as actionCreators from './actions';
 
 export default (preLoadedState, initialEntries) => {
-  const {reducer, middleware, enhancer, thunk} = connectRoutes(
-    routesMap,
-    {...options, initialEntries}
-  );
+  const {reducer, middleware, enhancer, thunk} = connectRoutes(routesMap, {
+    ...options,
+    initialEntries,
+  });
 
   const rootReducer = combineReducers({...reducers, location: reducer});
   const middlewares = applyMiddleware(middleware);

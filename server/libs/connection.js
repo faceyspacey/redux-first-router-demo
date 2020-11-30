@@ -11,7 +11,7 @@ mongoose.set('debug', false);
 
 mongoose.plugin(beautifyUnique);
 
-const connection = mongoose.createConnection(config.mongodb.uri)
+const connection = mongoose.createConnection(config.mongodb.uri);
 
 connection.on('error', console.error.bind(console, 'connection error:'));
 connection.on('open', function () {

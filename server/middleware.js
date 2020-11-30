@@ -9,11 +9,10 @@ const {login, health, register} = require('./controllers');
 const handleMongooseValidationError = require('./libs/validationErrors');
 
 function middleware(app) {
-
   // const db = mongoose.connection;
   // db.on('error', console.error.bind(console, 'connection error:'));
   // db.once('open', function () {
-    // console.log("we're connected!");
+  // console.log("we're connected!");
   // });
 
   app.use(bodyParser());

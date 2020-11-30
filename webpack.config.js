@@ -106,9 +106,7 @@ const serverDevelopment = {
           parallel: true,
         },
         onBuildEnd: {
-          scripts: [
-            'echo "onBuildEnd"',
-          ],
+          scripts: ['echo "onBuildEnd"'],
           blocking: false,
           parallel: true,
         },
@@ -187,7 +185,4 @@ function getModeConfig() {
   return config;
 }
 
-module.exports = merge.multiple(
-  baseConfig,
-  getModeConfig(),
-);
+module.exports = merge.multiple(baseConfig, getModeConfig());

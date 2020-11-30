@@ -1,5 +1,5 @@
 module.exports.health = async (ctx, next) => {
-    ctx.body = 'alive';
+  ctx.body = 'alive';
 
-    await next();
-}
+  await next();
+};

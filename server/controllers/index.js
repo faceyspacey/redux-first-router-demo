@@ -3,7 +3,7 @@ const {health} = require('./health');
 const {register} = require('./registration');
 
 module.exports = {
-    login,
-    health,
-    register,
-}
+  login,
+  health,
+  register,
+};

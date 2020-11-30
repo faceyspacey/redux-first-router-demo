@@ -7,7 +7,7 @@ import styles from '../css/Switcher';
 import UniversalComponent from './UniversalComponent';
 
 const Switcher = ({page, direction, isLoading}) => (
-  <div className={`${styles.switcher}`} >
+  <div className={`${styles.switcher}`}>
     <UniversalComponent page={page} isLoading={isLoading} />
   </div>
 );
