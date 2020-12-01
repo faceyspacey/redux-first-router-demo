@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
-const connection = require('../libs/connection');
 const config = require('../config');
 
 const userSchema = new mongoose.Schema(
@@ -72,4 +71,4 @@ userSchema.methods.checkPassword = async function (password) {
   return hash === this.passwordHash;
 };
 
-module.exports = connection.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);

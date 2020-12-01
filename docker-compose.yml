@@ -38,7 +38,7 @@ services:
     mongodb:
         image: mongo
         volumes: 
-            - mongodata:/data/
+            - mongodata:/data/db
         ports:
             - "27017:27017"
 

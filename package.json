@@ -132,10 +132,8 @@
   },
   "lint-staged": {
     "linters": {
-      "*.js": [
-        "eslint",
-        "stylelint"
-      ]
+      "*.{js,jsx}": "eslint",
+      "*.{css}": "stylelint"
     }
   }
 }
