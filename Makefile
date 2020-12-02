@@ -35,7 +35,7 @@ npm-install:
 	docker-compose run --rm node-cli npm install
 
 build-clear:
-	docker run --rm -v ${PWD}:/app -w /app alpine sh -c 'rm -rf out'
+	docker run --rm -v ${PWD}:/app -w /app alpine sh -c 'rm -rf out .build-ready dist buildClient buildServer'
 
 lint: 
 	docker-compose -f ${dc} run --rm node-cli npm run eslint
