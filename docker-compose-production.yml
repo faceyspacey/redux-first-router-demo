@@ -32,3 +32,13 @@ services:
             update_config:
                 parallelism: 1
                 delay: 10s
+    mongodb:
+        image: mongo
+        volumes: 
+            - mongodata:/data/db
+        deploy:
+            placement:
+                constraints: [node.role == manager]
+
+volumes:
+    mongodata:

@@ -70,9 +70,12 @@ function middleware(app) {
   });
 
   app.use(async (ctx, next) => {
-    const clientStats = importFresh(path.resolve(__dirname, '../out/buildServer/stats.json'));
-    const renderer = importFresh(path.resolve(__dirname, '../out/buildServer/serverRender.js'))
-      .default;
+    const clientStats = importFresh(
+      path.resolve(__dirname, '../out/buildServer/stats.json')
+    );
+    const renderer = importFresh(
+      path.resolve(__dirname, '../out/buildServer/serverRender.js')
+    ).default;
     const render = renderer({clientStats});
     await render(ctx, next);
   });

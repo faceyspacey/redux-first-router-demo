@@ -108,9 +108,7 @@ const serverDevelopment = {
     plugins: [
       new WebpackShellPluginNext({
         onBuildEnd: {
-          scripts: [
-            'echo "onBuildEnd Client"',
-          ],
+          scripts: ['echo "onBuildEnd Client"'],
           blocking: false,
           parallel: true,
         },
@@ -121,9 +119,7 @@ const serverDevelopment = {
     plugins: [
       new WebpackShellPluginNext({
         onBuildEnd: {
-          scripts: [
-            'echo "onBuildEnd Server"',
-          ],
+          scripts: ['echo "onBuildEnd Server"'],
           blocking: false,
           parallel: true,
         },
