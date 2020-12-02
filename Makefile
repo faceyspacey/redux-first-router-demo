@@ -8,7 +8,6 @@ init: docker-down-clear go
 v-init: docker-down go
 
 go: clear \
-	dist-mkdir \
 	docker-pull docker-build \
 	node-init \
 	docker-up
@@ -18,9 +17,6 @@ down: docker-down
 restart: down up
 
 clear: npm-ready-clear build-clear
-
-dist-mkdir:
-	mkdir -p dist 
 
 node-modules-mkdir:
 	mkdir -p node_modules
@@ -39,7 +35,7 @@ npm-install:
 	docker-compose run --rm node-cli npm install
 
 build-clear:
-	docker run --rm -v ${PWD}:/app -w /app alpine sh -c 'rm -rf .build-ready dist buildClient buildServer'
+	docker run --rm -v ${PWD}:/app -w /app alpine sh -c 'rm -rf out'
 
 lint: 
 	docker-compose -f ${dc} run --rm node-cli npm run eslint
@@ -63,7 +59,7 @@ docker-pull:
 docker-build:
 	docker-compose -f ${dc} build
 
-build: build-clear build-prod build-ready build-gateway build-server build-static
+build: build-clear build-prod build-gateway build-server build-static
 
 build-gateway:
 	docker --log-level=debug build --pull --file=gateway/docker/production/nginx/Dockerfile --tag=${REGISTRY}/rfr-gateway:${IMAGE_TAG} gateway/docker

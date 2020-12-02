@@ -11,15 +11,15 @@ const cssLoader = require('./webpack/cssLoader');
 const miniCssPlugin = require('./webpack/minicss');
 const {WebpackPluginServe: Serve} = require('webpack-plugin-serve');
 const WebpackShellPluginNext = require('webpack-shell-plugin-next');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const modes = {
-  DEVELOPMENT: 'development',
+  HOTRELOAD: 'hotreload',
   PRODUCTION: 'production',
-  SERVER_DEVELOPMENT: 'server-development',
+  DEVELOPMENT: 'development',
 };
 
 const res = (p) => path.resolve(__dirname, p);
-const DIST_DIR = path.resolve(__dirname, 'dist');
 const optimize = process.env.NODE_ENV === modes.PRODUCTION;
 const mode = optimize ? modes.PRODUCTION : modes.DEVELOPMENT;
 
@@ -29,10 +29,6 @@ const common = merge(
     mode,
     watch: !optimize,
     entry: ['fetch-everywhere'],
-    output: {
-      path: DIST_DIR,
-      publicPath: '/static/',
-    },
     resolve: {
       extensions: ['.js', '.css'],
     },
@@ -56,6 +52,8 @@ const baseConfig = {
       output: {
         filename: '[name].js',
         chunkFilename: '[name].js',
+        path: res('./out/buildClient'),
+        publicPath: '/static/',
       },
       optimization: {
         runtimeChunk: {
@@ -71,7 +69,16 @@ const baseConfig = {
           },
         },
       },
-      plugins: [new StatsPlugin('stats.json')],
+      plugins: [
+        new StatsPlugin('../buildServer/stats.json'),
+        new CopyPlugin({
+          patterns: [
+            {
+              from: res('static/favicon.ico'),
+            },
+          ],
+        }),
+      ],
     }
   ),
   server: merge.smart(
@@ -85,6 +92,7 @@ const baseConfig = {
       output: {
         filename: 'serverRender.js',
         libraryTarget: 'commonjs2',
+        path: res('./out/buildServer'),
       },
       plugins: [
         new webpack.optimize.LimitChunkCountPlugin({
@@ -96,17 +104,26 @@ const baseConfig = {
 };
 
 const serverDevelopment = {
-  client: {},
-  server: {
+  client: {
     plugins: [
       new WebpackShellPluginNext({
-        onDoneWatch: {
-          scripts: ['echo "Webpack onDoneWatch"'],
+        onBuildEnd: {
+          scripts: [
+            'echo "onBuildEnd Client"',
+          ],
           blocking: false,
           parallel: true,
         },
+      }),
+    ],
+  },
+  server: {
+    plugins: [
+      new WebpackShellPluginNext({
         onBuildEnd: {
-          scripts: ['echo "onBuildEnd"'],
+          scripts: [
+            'echo "onBuildEnd Server"',
+          ],
           blocking: false,
           parallel: true,
         },
@@ -119,7 +136,7 @@ const serverDevelopment = {
 function getDevelopmentConfig() {
   const serve = new Serve({
     port: 3000,
-    static: [DIST_DIR],
+    static: ['out/buildClient'],
     waitForBuild: true,
     middleware, // здесь находятся мидлвари сервера
     client: {
@@ -151,14 +168,12 @@ const productionConfig = {
     output: {
       filename: '[name].[chunkhash].js',
       chunkFilename: '[name].[chunkhash].js',
-      path: res('./buildClient'),
     },
   },
   server: {
     devtool: false,
     output: {
       filename: 'serverRender.js',
-      path: res('./buildServer'),
     },
     plugins: [new webpack.HashedModuleIdsPlugin()],
   },
@@ -173,10 +188,10 @@ function getModeConfig() {
     case modes.PRODUCTION:
       config = productionConfig;
       break;
-    case modes.SERVER_DEVELOPMENT:
+    case modes.DEVELOPMENT:
       config = serverDevelopment;
       break;
-    case modes.DEVELOPMENT:
+    case modes.HOTRELOAD:
     default:
       config = getDevelopmentConfig();
       break;

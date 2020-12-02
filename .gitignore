@@ -1,9 +1,6 @@
 node_modules
 *.log
-/buildClient
-/buildServer
-/dist
 /htpasswd
 /*-lock.json
 .npm-ready
-.build-ready
+out

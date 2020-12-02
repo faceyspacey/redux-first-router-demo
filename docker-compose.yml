@@ -11,7 +11,7 @@ services:
             context: static/docker
             dockerfile: development/nginx/Dockerfile
         volumes:
-            - ./dist:/app/dist
+            - ./:/app
     webpack-watch:
         build:
             context: webpack/docker
@@ -20,7 +20,7 @@ services:
             - "9228:9229"
         volumes:
             - ./:/app
-        command: sh -c "until [ -f .npm-ready ] ; do sleep 1 ; done && npm run start:server-development"
+        command: sh -c "until [ -f .npm-ready ] ; do sleep 1 ; done && npm run start:webpack-watch"
     node-cli:
         image: node:alpine
         working_dir: /app
@@ -34,7 +34,7 @@ services:
             - "9229:9229"
         volumes: 
             - ./:/app
-        command: sh -c "until [ -f .npm-ready ] ; do sleep 1 ; done && wait-for-it mongodb:27017 -t 60 && node_modules/.bin/nodemon --inspect=0.0.0.0 server"  
+        command: sh -c "until [ -f .npm-ready ] ; do sleep 1 ; done && wait-for-it mongodb:27017 -t 60 && npm run start:server"  
     mongodb:
         image: mongo
         volumes: 

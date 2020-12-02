@@ -11,7 +11,7 @@ services:
             context: static/docker
             dockerfile: development/nginx/Dockerfile
         volumes:
-            - ./dist:/app/dist
+            - ./:/app
     myapp:
         build:
             context: server/docker
@@ -20,7 +20,7 @@ services:
             - "9229:9229"
         volumes:
             - ./:/app
-        command: sh -c "until [ -f .npm-ready ] ; do sleep 1 ; done && wait-for-it mongodb:27017 -t 60 && npm start"
+        command: sh -c "until [ -f .npm-ready ] ; do sleep 1 ; done && wait-for-it mongodb:27017 -t 60 && npm run start:hotreload"
     node-cli:
         image: node:alpine
         working_dir: /app

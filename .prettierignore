@@ -1,5 +1,3 @@
-dist
-buildClient
-buildServer
+out
 
 package-lock.json

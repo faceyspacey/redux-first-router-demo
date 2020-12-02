@@ -4,7 +4,6 @@ const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 const router = new Router();
 const importFresh = require('import-fresh');
-const DIST_DIR = path.resolve(__dirname, '../dist');
 const {login, health, register} = require('./controllers');
 
 const mongoose = require('mongoose');
@@ -71,8 +70,8 @@ function middleware(app) {
   });
 
   app.use(async (ctx, next) => {
-    const clientStats = importFresh(path.resolve(DIST_DIR, 'stats.json'));
-    const renderer = importFresh(path.resolve(DIST_DIR, 'serverRender.js'))
+    const clientStats = importFresh(path.resolve(__dirname, '../out/buildServer/stats.json'));
+    const renderer = importFresh(path.resolve(__dirname, '../out/buildServer/serverRender.js'))
       .default;
     const render = renderer({clientStats});
     await render(ctx, next);
